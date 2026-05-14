@@ -1,17 +1,18 @@
 ﻿using CL_Taller.CPersona;
+using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CVehiculo
 {
-    internal class Vehiculo
+    public abstract class Vehiculo : IVehiculo
     {
-        private string placa;
-        private string marca;
-        private string modelo;
-        private ushort ano;
-        private Cliente dueno_vehiculo;
+        protected string placa;
+        protected string marca;
+        protected string modelo;
+        protected ushort ano;
+        protected Cliente dueno_vehiculo;
 
         public Vehiculo(string placa, string marca, string modelo, ushort ano, Cliente dueno_vehiculo)
         {
@@ -36,5 +37,17 @@ namespace CL_Taller.CVehiculo
                 value : throw new Exception("Año no valido"); }
         internal Cliente Dueno_vehiculo { get => dueno_vehiculo; 
             set => dueno_vehiculo = value; }
+
+        public abstract string CalibrarSensores();
+
+        public abstract string CambiarLlantas();
+
+        public abstract string CambiarPieza();
+
+        public abstract string DesconexionBateria();
+
+        public abstract string Escaner();
+
+        public abstract string PuestaAPunto();
     }
 }

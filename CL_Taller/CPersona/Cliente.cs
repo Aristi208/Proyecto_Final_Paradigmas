@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CL_Taller.CPersona
 {
-    internal class Cliente : Persona
+    public class Cliente : Persona
     {
         private bool estado_credito;
         private ulong sldo_debe;

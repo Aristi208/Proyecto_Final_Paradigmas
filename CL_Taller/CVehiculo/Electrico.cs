@@ -16,5 +16,35 @@ namespace CL_Taller.CVehiculo
         public ushort Autonomia { get => autonomia; 
             set => autonomia = value >= RglsVehiculo.min_autonomia && value <= RglsVehiculo.max_autonomia ?
                 value : throw new Exception("Autonomia no valida"); }
+
+        public override string CalibrarSensores()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CambiarLlantas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CambiarPieza()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string DesconexionBateria()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string Escaner()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string PuestaAPunto()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

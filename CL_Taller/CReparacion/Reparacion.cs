@@ -1,25 +1,28 @@
 ﻿using CL_Taller.CPersona;
 using CL_Taller.CVehiculo;
+using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CReparacion
 {
-    internal class Reparacion
+    public class Reparacion
     {
         private Vehiculo vehiculo;
         private DateTime fecha;
         private List<Repuesto> l_repuestos;
         private List<Mecanico> l_mecanicos;
         private bool rep_terminada;
+        private IVehiculo ivehiculo;
 
         // TODO: IVehiculos para inyectar tmb se debe meter al constructor y mirar q más se puede meter al constructor
-        public Reparacion(Vehiculo vehiculo)
+        public Reparacion(Vehiculo vehiculo, IVehiculo ivehiculo)
         {
             Vehiculo = vehiculo;
             fecha = DateTime.Now;
             rep_terminada = false;
+            Ivehiculo = ivehiculo;
         }
 
         internal Vehiculo Vehiculo { get => vehiculo; 
@@ -33,5 +36,6 @@ namespace CL_Taller.CReparacion
                 value : throw new Exception("No se puede añadir mecanicos en una reparacion terminada"); }
         public bool Rep_terminada { get => rep_terminada; set => rep_terminada = !Rep_terminada ? 
                 value : throw new Exception("No se puede interferir una reparacion terminada"); }
+        public IVehiculo Ivehiculo { get => ivehiculo; set => ivehiculo = value; }
     }
 }

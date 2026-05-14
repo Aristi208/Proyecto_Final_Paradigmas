@@ -16,5 +16,35 @@ namespace CL_Taller.CVehiculo
         public byte Cant_cilindros { get => cant_cilindros; 
             set => cant_cilindros = value >= RglsVehiculo.min_cant_cilindros && value <= RglsVehiculo.max_cant_cilindros ?
                 value : throw new Exception("Cantidad de cilindros no valida"); }
+
+        public override string CalibrarSensores()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CambiarLlantas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CambiarPieza()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string DesconexionBateria()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string Escaner()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string PuestaAPunto()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

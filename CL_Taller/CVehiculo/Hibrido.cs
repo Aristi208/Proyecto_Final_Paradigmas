@@ -16,5 +16,35 @@ namespace CL_Taller.CVehiculo
         public byte Cant_baterias { get => cant_baterias; 
             set => cant_baterias = value >= RglsVehiculo.min_cant_baterias && value <= RglsVehiculo.max_cant_baterias ?
                 value : throw new Exception("Cantidad de bateria no valida"); }
+
+        public override string CalibrarSensores()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CambiarLlantas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CambiarPieza()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string DesconexionBateria()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string Escaner()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string PuestaAPunto()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

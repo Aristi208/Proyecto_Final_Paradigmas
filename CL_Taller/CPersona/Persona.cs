@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CL_Taller.CPersona
 {
-    internal class Persona
+    public abstract class Persona
     {
         private ulong id;
         private string nombre;
