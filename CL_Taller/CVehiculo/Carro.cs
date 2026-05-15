@@ -1,4 +1,5 @@
 ﻿using CL_Taller.CPersona;
+using CL_Taller.CReparacion;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,16 +13,16 @@ namespace CL_Taller.CVehiculo
         {
         }
 
-        public abstract override string CalibrarSensores(); // Falta logica - mensaje
+        public abstract override string CalibrarSensores();
 
-        public abstract override string CambiarLlantas(); // Falta logica - mensaje
+        public abstract override string CambiarLlantas(); 
 
-        public abstract override string CambiarPieza(); // Falta logica - mensaje
+        public abstract override string CambiarPieza(Repuesto repuesto); 
 
-        public abstract override string DesconexionBateria(); // Falta logica - mensaje
+        public abstract override string DesconexionBateria(); 
 
-        public abstract override string Escaner(); // Falta logica - mensaje
+        public abstract override string Escaner(); 
 
-        public abstract override string PuestaAPunto(); // Falta logica - mensaje
+        public abstract override string PuestaAPunto(); 
     }
 }

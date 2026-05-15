@@ -1,4 +1,5 @@
 ﻿using CL_Taller.CPersona;
+using CL_Taller.CReparacion;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,32 +20,33 @@ namespace CL_Taller.CVehiculo
 
         public override string CalibrarSensores()
         {
-            throw new NotImplementedException();
+            return $"Sensores calibrados en Carro Electrico - ${RglsVehiculo.precio_calibrar_Sensores}";
         }
 
         public override string CambiarLlantas()
         {
-            throw new NotImplementedException();
+            return $"Llantas cambiadas en Carro Electrico - ${RglsVehiculo.precio_cambiar_llantas}";
         }
 
-        public override string CambiarPieza()
+        public override string CambiarPieza(Repuesto repuesto)
         {
-            throw new NotImplementedException();
+            ulong precio = RglsVehiculo.precio_Cambiar_pieza + repuesto.Valor;
+            return $"Pieza cambiada en Carro Electrico {repuesto.Nombre} - ${precio}";
         }
 
         public override string DesconexionBateria()
         {
-            throw new NotImplementedException();
+            return $"Desconexion de Bateria Carro Electrico - ${RglsVehiculo.precio_Desconexion_bateria}";
         }
 
         public override string Escaner()
         {
-            throw new NotImplementedException();
+            return $"Escaner realizado en Carro Electrico - ${RglsVehiculo.precio_escaner}";
         }
 
         public override string PuestaAPunto()
         {
-            throw new NotImplementedException();
+            return $"Puesta a punto en Carro Electrico - ${RglsVehiculo.precio_puesta_A_Punta}";
         }
     }
 }

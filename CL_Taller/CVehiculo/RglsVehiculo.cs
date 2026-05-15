@@ -20,5 +20,13 @@ namespace CL_Taller.CVehiculo
         public static readonly byte max_cant_baterias = 2;
         public static readonly ushort min_cant_cilindros = 2;
         public static readonly ushort max_cant_cilindros = 16;
+
+        // Precios 
+        public static readonly uint precio_calibrar_Sensores = 120000;
+        public static readonly uint precio_cambiar_llantas = 180000;
+        public static readonly uint precio_Cambiar_pieza = 250000;
+        public static readonly uint precio_Desconexion_bateria = 150000;
+        public static readonly uint precio_escaner = 90000;
+        public static readonly uint precio_puesta_A_Punta = 300000;
     }
 }

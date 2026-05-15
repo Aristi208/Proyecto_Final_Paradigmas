@@ -8,19 +8,24 @@
     "net10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\camil\\.nuget\\packages\\": {}
+    "C:\\Users\\diego\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\camil\\OneDrive - UPB\\Ing. de sistemas e informatica\\SM3\\PARADIGMAS\\PFinal_Paradigmas\\CL_Taller\\CL_Taller.csproj",
+      "projectUniqueName": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\CL_Taller.csproj",
       "projectName": "CL_Taller",
-      "projectPath": "C:\\Users\\camil\\OneDrive - UPB\\Ing. de sistemas e informatica\\SM3\\PARADIGMAS\\PFinal_Paradigmas\\CL_Taller\\CL_Taller.csproj",
-      "packagesPath": "C:\\Users\\camil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\camil\\OneDrive - UPB\\Ing. de sistemas e informatica\\SM3\\PARADIGMAS\\PFinal_Paradigmas\\CL_Taller\\obj\\",
+      "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\CL_Taller.csproj",
+      "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\camil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -32,7 +37,6 @@
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -51,7 +55,6 @@
     },
     "frameworks": {
       "net10.0": {
-        "framework": "net10.0",
         "targetAlias": "net10.0",
         "imports": [
           "net461",
@@ -69,7 +72,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -346,5 +349,13 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }

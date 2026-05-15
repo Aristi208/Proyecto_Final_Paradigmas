@@ -12,7 +12,7 @@ namespace CL_Taller.CPago
 
         public override void RealizarPago(ulong monto)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // Falta logica
         }
     }
 }

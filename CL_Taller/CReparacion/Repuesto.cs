@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CL_Taller.CReparacion
 {
-    internal class Repuesto
+    public class Repuesto
     {
         private string nombre;
         private string proveedor;

@@ -15,6 +15,7 @@ namespace CL_Taller.CReparacion
         private List<Mecanico> l_mecanicos;
         private bool rep_terminada;
         private IVehiculo ivehiculo;
+        private List<string> arreglos;
 
         // TODO: IVehiculos para inyectar tmb se debe meter al constructor y mirar q más se puede meter al constructor
         public Reparacion(Vehiculo vehiculo, IVehiculo ivehiculo)
@@ -23,8 +24,9 @@ namespace CL_Taller.CReparacion
             fecha = DateTime.Now;
             rep_terminada = false;
             Ivehiculo = ivehiculo;
+            arreglos = new List<string>();
         }
-
+         
         internal Vehiculo Vehiculo { get => vehiculo; 
             set => vehiculo = value; }
         public DateTime Fecha { get => fecha; }
@@ -37,5 +39,37 @@ namespace CL_Taller.CReparacion
         public bool Rep_terminada { get => rep_terminada; set => rep_terminada = !Rep_terminada ? 
                 value : throw new Exception("No se puede interferir una reparacion terminada"); }
         public IVehiculo Ivehiculo { get => ivehiculo; set => ivehiculo = value; }
+        public List<string> Arreglos { get => arreglos; }
+
+        public void CalibrarSensores()
+        {
+            arreglos.Add(ivehiculo.CalibrarSensores());
+        }
+
+        public void CambiarLlantas()
+        {
+            arreglos.Add(ivehiculo.CambiarLlantas());
+        }
+
+        public void CambiarPieza(Repuesto repuesto)
+        {
+            arreglos.Add(ivehiculo.CambiarPieza(repuesto));
+        }
+
+        public void DesconexionBateria()
+        {
+            arreglos.Add(ivehiculo.DesconexionBateria());
+        }
+
+        public void Escaner()
+        {
+            arreglos.Add(ivehiculo.Escaner());
+        }
+
+        public void PuestaAPunto()
+        {
+            arreglos.Add(ivehiculo.PuestaAPunto());
+        }
+
     }
 }

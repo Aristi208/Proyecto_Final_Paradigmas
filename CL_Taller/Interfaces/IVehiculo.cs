@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CL_Taller.CReparacion;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +12,7 @@ namespace CL_Taller.Interfaces
         abstract string DesconexionBateria();
         abstract string CambiarLlantas();
         abstract string CalibrarSensores();
-        abstract string CambiarPieza();
+        abstract string CambiarPieza(Repuesto repuesto);
 
 
     }

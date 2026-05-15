@@ -13,7 +13,7 @@ namespace CL_Taller.CPersona
         {
             this.Estado_credito = estado_credito;
         }
-        public bool Estado_credito { get => estado_credito; // NOTE: Revisar esta logica, no me cuadra att: diego
+        public bool Estado_credito { get => estado_credito; // NOTE: Revisar esta logica, no me cuadra o si? att: diego 
             set => estado_credito = value; }
         public ulong Sldo_debe { get => sldo_debe; 
             set => sldo_debe = (value >= RglsPersona.valor_nulo && estado_credito == true) ? 
