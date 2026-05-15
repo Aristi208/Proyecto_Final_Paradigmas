@@ -1,18 +1,24 @@
-﻿using System;
+﻿using CL_Taller.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CPago
 {
-    internal class Tarj_debito : Sin_credito
+    public class Tarj_debito : Pago
     {
         public Tarj_debito(ulong monto) : base(monto)
         {
         }
 
-        public override void RealizarPago(ulong monto)
+        public override string RealizarPago(ulong monto)
         {
-            throw new NotImplementedException();
+            return $"✔ Pago con tarjeta débito realizado con éxito por ${monto:N0}.";
+        }
+
+        public override string ToString()
+        {
+            return "Tarjeta Débito";
         }
     }
 }

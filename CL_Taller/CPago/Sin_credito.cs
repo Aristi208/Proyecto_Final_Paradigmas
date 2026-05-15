@@ -10,6 +10,8 @@ namespace CL_Taller.CPago
         {
         }
 
-        public abstract override void RealizarPago(ulong monto); //Falta logica en las derivadas
+        public abstract override string RealizarPago(ulong monto); //Falta logica en las derivadas
+
+        public abstract override string ToString();
     }
 }

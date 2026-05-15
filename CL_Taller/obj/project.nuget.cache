@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CZJKV2Ak/q8=",
+  "dgSpecHash": "3xk4COZKQuI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\CL_Taller.csproj",
+  "projectFilePath": "C:\\Users\\camil\\OneDrive - UPB\\Ing. de sistemas e informatica\\SM3\\PARADIGMAS\\PFinal_Paradigmas\\CL_Taller\\CL_Taller.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problema al leer el archivo de caché C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\CL_Taller.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\CL_Taller\\CL_Taller.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

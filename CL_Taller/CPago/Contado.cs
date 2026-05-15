@@ -1,18 +1,24 @@
-﻿using System;
+﻿using CL_Taller.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CPago
 {
-    internal class Contado : Sin_credito
+    public class Contado : Pago
     {
         public Contado(ulong monto) : base(monto)
         {
         }
 
-        public override void RealizarPago(ulong monto)
+        public override string RealizarPago(ulong monto)
         {
-            throw new NotImplementedException(); // Falta logica
+            return $"✔ Pago de contado realizado con éxito por ${monto:N0}.";
+        }
+
+        public override string ToString()
+        {
+            return "Contado";
         }
     }
 }

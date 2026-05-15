@@ -6,7 +6,6 @@ namespace CL_Taller.Interfaces
 {
     public interface IPago
     {
-        void RealizarPago(ulong monto);
-
+        string RealizarPago(ulong monto);
     }
 }

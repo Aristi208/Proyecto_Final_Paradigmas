@@ -1,18 +1,29 @@
-﻿using System;
+﻿using CL_Taller.CPersona;
+using CL_Taller.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CPago
 {
-    internal class Con_credito : Pago
+    public class Con_credito : Pago
     {
-        public Con_credito(ulong monto) : base(monto)
+        private Cliente cliente;
+
+        public Con_credito(ulong monto, Cliente cliente) : base(monto)
         {
+            this.cliente = cliente;
         }
 
-        public override void RealizarPago(ulong monto)
+        public override string RealizarPago(ulong monto)
         {
-            // Falta logica
+            cliente.Sldo_debe += monto;
+            return $"✔ Pago a crédito registrado. Saldo pendiente: ${monto:N0}.";
+        }
+
+        public override string ToString()
+        {
+            return "Crédito";
         }
     }
 }

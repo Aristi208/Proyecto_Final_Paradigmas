@@ -9,6 +9,7 @@ namespace CL_Taller.CReparacion
 {
     public class Reparacion
     {
+        private ulong id;
         private Vehiculo vehiculo;
         private DateTime fecha;
         private List<Repuesto> l_repuestos;
@@ -40,6 +41,7 @@ namespace CL_Taller.CReparacion
                 value : throw new Exception("No se puede interferir una reparacion terminada"); }
         public IVehiculo Ivehiculo { get => ivehiculo; set => ivehiculo = value; }
         public List<string> Arreglos { get => arreglos; }
+        public ulong Id { get => id; set => id = value; }
 
         public void CalibrarSensores()
         {
