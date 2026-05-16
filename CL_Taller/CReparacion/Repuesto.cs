@@ -31,5 +31,11 @@ namespace CL_Taller.CReparacion
         public ulong Valor { get => valor; 
             set => valor = value >= RglsReparacion.valor_nulo ? 
                 value : throw new Exception("No se puede un valor menor a 0"); }
+        
+        public override string ToString()
+        {
+            return $"Repuesto: {Nombre} | Proveedor: {Proveedor} | " +
+                   $"Fecha compra: {Fecha_compra:dd/MM/yyyy} | Valor: ${Valor}";
+        }
     }
 }

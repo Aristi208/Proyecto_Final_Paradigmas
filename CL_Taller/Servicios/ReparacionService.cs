@@ -10,6 +10,7 @@ namespace CL_Taller.Servicios
 {
     internal class ReparacionService
     {
+
         private List<Reparacion> l_reparaciones = new();
 
         public List<Reparacion> L_reparaciones { get => l_reparaciones; }

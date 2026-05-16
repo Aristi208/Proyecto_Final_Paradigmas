@@ -26,6 +26,8 @@ namespace CL_Taller.CReparacion
             rep_terminada = false;
             Ivehiculo = ivehiculo;
             arreglos = new List<string>();
+            l_repuestos = new List<Repuesto>();
+            l_mecanicos = new List<Mecanico>();
         }
          
         internal Vehiculo Vehiculo { get => vehiculo; 
@@ -71,6 +73,21 @@ namespace CL_Taller.CReparacion
         public void PuestaAPunto()
         {
             arreglos.Add(ivehiculo.PuestaAPunto());
+        }
+
+        public override string ToString()
+        {
+            string mecanicos = L_mecanicos != null && L_mecanicos.Count > 0
+                ? string.Join(", ", L_mecanicos)
+                : "Sin mecánicos asignados";
+
+            string repuestos = L_repuestos != null && L_repuestos.Count > 0
+                ? string.Join(", ", L_repuestos)
+                : "Sin repuestos";
+
+            return $"Reparación | Vehículo: {Vehiculo} | Fecha: {Fecha:dd/MM/yyyy} | " +
+                   $"Terminada: {Rep_terminada} | Mecánicos: [{mecanicos}] | " +
+                   $"Repuestos: [{repuestos}] | Arreglos: [{string.Join(", ", Arreglos)}]";
         }
 
     }

@@ -50,5 +50,10 @@ namespace CL_Taller.CVehiculo
         public abstract string Escaner();
 
         public abstract string PuestaAPunto();
+
+        public override string ToString()
+        {
+            return $"Vehículo | Placa: {Placa} | Marca: {Marca} | Modelo: {Modelo} | Año: {Ano}";
+        }
     }
 }

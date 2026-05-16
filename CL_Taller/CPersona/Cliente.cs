@@ -18,5 +18,11 @@ namespace CL_Taller.CPersona
         public ulong Sldo_debe { get => sldo_debe; 
             set => sldo_debe = (value >= RglsPersona.valor_nulo && estado_credito == true) ? 
                 value : throw new Exception("Cliente no valido para deber"); }
+
+        public override string ToString()
+        {
+            return $"Cliente | ID: {Id} | Nombre: {Nombre} | " +
+                   $"Teléfono: {Telefono} | Crédito: {Estado_credito} | Saldo debe: ${Sldo_debe}";
+        }
     }
 }

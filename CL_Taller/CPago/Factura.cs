@@ -61,5 +61,10 @@ namespace CL_Taller.CPago
 
             ipago = nuevoPago;
         }
+        public override string ToString()
+        {
+            return $"Factura | Cliente: {Cliente} | Total: ${Total} | " +
+                   $"Estado: {Estado} | Reparación: [{Reparacion}]";
+        }
     }
 }

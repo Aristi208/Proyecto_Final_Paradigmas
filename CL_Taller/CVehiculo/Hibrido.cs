@@ -48,5 +48,9 @@ namespace CL_Taller.CVehiculo
         {
             return $"Puesta a punto en Carro Hibrido - ${RglsVehiculo.precio_puesta_A_Punta}";
         }
+        public override string ToString()
+        {
+            return $"{base.ToString()} | Baterías: {Cant_baterias}";
+        }
     }
 }

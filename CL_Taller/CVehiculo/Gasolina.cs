@@ -48,5 +48,10 @@ namespace CL_Taller.CVehiculo
         {
             return $"Puesta a punto en Carro a Gasolina - ${RglsVehiculo.precio_puesta_A_Punta}";
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()} | Cilindros: {Cant_cilindros}";
+        }
     }
 }
