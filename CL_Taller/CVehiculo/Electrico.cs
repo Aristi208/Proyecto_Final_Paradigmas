@@ -1,18 +1,20 @@
 ﻿using CL_Taller.CPersona;
 using CL_Taller.CReparacion;
+using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CVehiculo
 {
-    internal class Electrico : Carro
+    internal class Electrico : Carro, IValidable
     {
         private ushort autonomia;
 
         public Electrico(string placa, string marca, string modelo, ushort ano, Cliente dueno_vehiculo, ushort autonomia) : base(placa, marca, modelo, ano, dueno_vehiculo)
         {
             this.Autonomia = autonomia;
+            Validar();
         }
         public ushort Autonomia { get => autonomia; 
             set => autonomia = value >= RglsVehiculo.min_autonomia && value <= RglsVehiculo.max_autonomia ?
@@ -48,6 +50,12 @@ namespace CL_Taller.CVehiculo
         {
             return $"Puesta a punto en Carro Electrico - ${RglsVehiculo.precio_puesta_A_Punta}";
         }
+
+        public void Validar()
+        {
+            Autonomia = autonomia;
+        }
+
         public override string ToString()
         {
             return $"{base.ToString()} | Autonomía: {Autonomia}km";

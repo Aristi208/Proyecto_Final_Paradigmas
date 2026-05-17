@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CL_Taller.CReparacion
 {
-    public class Reparacion
+    public class Reparacion : IValidable
     {
         private ulong id;
         private Vehiculo vehiculo;
@@ -28,6 +28,7 @@ namespace CL_Taller.CReparacion
             arreglos = new List<string>();
             l_repuestos = new List<Repuesto>();
             l_mecanicos = new List<Mecanico>();
+            Validar();
         }
          
         internal Vehiculo Vehiculo { get => vehiculo; 
@@ -73,6 +74,12 @@ namespace CL_Taller.CReparacion
         public void PuestaAPunto()
         {
             arreglos.Add(ivehiculo.PuestaAPunto());
+        }
+
+        public void Validar()
+        {
+            Vehiculo = vehiculo;
+            Ivehiculo = ivehiculo;
         }
 
         public override string ToString()

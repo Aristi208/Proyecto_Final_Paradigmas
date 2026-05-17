@@ -1,5 +1,6 @@
 ﻿using CL_Taller.CPersona;
 using CL_Taller.CReparacion;
+using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CL_Taller.CPersona
 {
-    internal class RglsPersona
+    public class RglsPersona
     {
         public static readonly byte valor_nulo = 0;
 

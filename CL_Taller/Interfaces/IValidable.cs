@@ -8,9 +8,7 @@ namespace CL_Taller.Interfaces
 {
     internal interface IValidable
     {
-        bool Validar(object datos);
-        bool ValidarCliente(Cliente cliente);
-        bool ValidarVehiculo(Vehiculo vehiculo);
+        void Validar();
 
     }
 }

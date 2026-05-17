@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CL_Taller.CVehiculo
 {
-    public abstract class Vehiculo : IVehiculo
+    public abstract class Vehiculo : IVehiculo, IValidable
     {
         protected string placa;
         protected string marca;
@@ -22,6 +22,7 @@ namespace CL_Taller.CVehiculo
             this.Modelo = modelo;
             this.Ano = ano;
             this.Dueno_vehiculo = dueno_vehiculo;
+            Validar();
         }
 
         public string Placa { get => placa; 
@@ -34,7 +35,7 @@ namespace CL_Taller.CVehiculo
             set => modelo = System.Text.RegularExpressions.Regex.IsMatch(value, RglsVehiculo.regex_modelo) ?
                 value : throw new Exception("Modelo no valido"); }
         public ushort Ano { get => ano; 
-            set => ano = (ano >= RglsVehiculo.ano_min && ano <= DateTime.Now.Year + RglsVehiculo.ano_max_sum) ?
+            set => ano = (value >= RglsVehiculo.ano_min && value <= DateTime.Now.Year + RglsVehiculo.ano_max_sum) ?
                 value : throw new Exception("Año no valido"); }
         internal Cliente Dueno_vehiculo { get => dueno_vehiculo; 
             set => dueno_vehiculo = value; }
@@ -51,9 +52,19 @@ namespace CL_Taller.CVehiculo
 
         public abstract string PuestaAPunto();
 
+        public void Validar()
+        {
+            Placa = placa;
+            Marca = marca;
+            Modelo = modelo;
+            Ano = ano;
+            Dueno_vehiculo = dueno_vehiculo;
+        }
+
         public override string ToString()
         {
             return $"Vehículo | Placa: {Placa} | Marca: {Marca} | Modelo: {Modelo} | Año: {Ano}";
         }
+       
     }
 }

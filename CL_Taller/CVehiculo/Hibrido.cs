@@ -1,18 +1,20 @@
 ﻿using CL_Taller.CPersona;
 using CL_Taller.CReparacion;
+using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CVehiculo
 {
-    internal class Hibrido : Carro
+    internal class Hibrido : Carro, IValidable
     {
         private byte cant_baterias;
 
         public Hibrido(string placa, string marca, string modelo, ushort ano, Cliente dueno_vehiculo, byte cant_baterias) : base(placa, marca, modelo, ano, dueno_vehiculo)
         {
             this.Cant_baterias = cant_baterias;
+            Validar();
         }
         public byte Cant_baterias { get => cant_baterias; 
             set => cant_baterias = value >= RglsVehiculo.min_cant_baterias && value <= RglsVehiculo.max_cant_baterias ?
@@ -48,6 +50,12 @@ namespace CL_Taller.CVehiculo
         {
             return $"Puesta a punto en Carro Hibrido - ${RglsVehiculo.precio_puesta_A_Punta}";
         }
+
+        public void Validar()
+        {
+            Cant_baterias = cant_baterias;
+        }
+
         public override string ToString()
         {
             return $"{base.ToString()} | Baterías: {Cant_baterias}";

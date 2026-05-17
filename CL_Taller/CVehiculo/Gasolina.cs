@@ -1,18 +1,20 @@
 ﻿using CL_Taller.CPersona;
 using CL_Taller.CReparacion;
+using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CL_Taller.CVehiculo
 {
-    internal class Gasolina : Carro
+    internal class Gasolina : Carro, IValidable
     {
         private byte cant_cilindros;
 
         public Gasolina(string placa, string marca, string modelo, ushort ano, Cliente dueno_vehiculo, byte cant_cilindros) : base(placa, marca, modelo, ano, dueno_vehiculo)
         {
             this.Cant_cilindros = cant_cilindros;
+            Validar();
         }
         public byte Cant_cilindros { get => cant_cilindros; 
             set => cant_cilindros = value >= RglsVehiculo.min_cant_cilindros && value <= RglsVehiculo.max_cant_cilindros ?
@@ -47,6 +49,11 @@ namespace CL_Taller.CVehiculo
         public override string PuestaAPunto()
         {
             return $"Puesta a punto en Carro a Gasolina - ${RglsVehiculo.precio_puesta_A_Punta}";
+        }
+
+        public void Validar()
+        {
+            Cant_cilindros = cant_cilindros;
         }
 
         public override string ToString()

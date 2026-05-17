@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CL_Taller.CPago
 {
-    public class Factura
+    public class Factura : IValidable
     {
         private IPago ipago;
         private Reparacion reparacion;
@@ -37,6 +37,7 @@ namespace CL_Taller.CPago
         public Cliente Cliente { get => cliente; }
         public Reparacion Reparacion { get => reparacion; }
         public IPago Ipago { get => ipago; }
+        public bool Estado { get => estado; }
 
         public ulong CalcularTotal(Reparacion reparacion)
         {
@@ -61,6 +62,7 @@ namespace CL_Taller.CPago
 
             ipago = nuevoPago;
         }
+
         public override string ToString()
         {
             return $"Factura | Cliente: {Cliente} | Total: ${Total} | " +

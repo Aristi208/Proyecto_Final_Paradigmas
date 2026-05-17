@@ -1,11 +1,12 @@
-﻿using System;
+﻿using CL_Taller.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace CL_Taller.CPersona
 {
-    public abstract class Persona
+    public abstract class Persona : IValidable
     {
         private ulong id;
         private string nombre;
@@ -16,6 +17,7 @@ namespace CL_Taller.CPersona
             this.Id = id;
             this.Nombre = nombre;
             this.Telefono = telefono;
+            Validar();
         }
         public ulong Id { get => id; 
             set => id = System.Text.RegularExpressions.Regex.IsMatch(value.ToString(), RglsPersona.regex_id) ? 
@@ -27,5 +29,11 @@ namespace CL_Taller.CPersona
             set => telefono = System.Text.RegularExpressions.Regex.IsMatch(value.ToString(), RglsPersona.regex_telefono) ?
                 value : throw new Exception("El telefono no es valido"); }
 
+        public void Validar()
+        {
+            Id = id;
+            Nombre = nombre;
+            Telefono = telefono;
+        }
     }
 }

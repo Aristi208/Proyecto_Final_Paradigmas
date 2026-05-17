@@ -1,11 +1,13 @@
 ﻿using CL_Taller.CVehiculo;
+using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace CL_Taller.CReparacion
 {
-    public class Repuesto
+    public class Repuesto : IValidable
     {
         private string nombre;
         private string proveedor;
@@ -18,6 +20,7 @@ namespace CL_Taller.CReparacion
             this.Proveedor = proveedor;
             this.Fecha_compra = fecha_compra;
             this.Valor = valor;
+            Validar();
         }
         public string Nombre { get => nombre; 
             set => nombre = System.Text.RegularExpressions.Regex.IsMatch(value, RglsReparacion.regex_nombre) ?
@@ -32,10 +35,19 @@ namespace CL_Taller.CReparacion
             set => valor = value >= RglsReparacion.valor_nulo ? 
                 value : throw new Exception("No se puede un valor menor a 0"); }
         
+        public void Validar()
+        {
+            this.Nombre = nombre;
+            this.Proveedor = proveedor;
+            this.Fecha_compra = fecha_compra;
+            this.Valor = valor;
+        }
+
         public override string ToString()
         {
             return $"Repuesto: {Nombre} | Proveedor: {Proveedor} | " +
                    $"Fecha compra: {Fecha_compra:dd/MM/yyyy} | Valor: ${Valor}";
         }
+
     }
 }
