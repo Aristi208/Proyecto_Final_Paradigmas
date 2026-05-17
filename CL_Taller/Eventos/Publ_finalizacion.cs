@@ -1,22 +1,22 @@
-﻿using CL_Taller.CVehiculo;
+﻿using CL_Taller.CReparacion;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CL_Taller.Eventos
 {
     public class Publ_finalizacion
     {
+        public delegate string dele_finalizacion(Reparacion reparacion);
 
-        public delegate void dele_finalizacion();
         public event dele_finalizacion evt_finalizacion;
-        public string InformarFinalizacion()
+
+        public string InformarFinalizacion(Reparacion reparacion)
         {
             if (evt_finalizacion != null)
-                return $"Se a finalizado el vehiculo";
-            else
-                throw new Exception("El método se debe llamar desde un evento suscrito");
-        }
+            {
+                return evt_finalizacion.Invoke(reparacion);
+            }
 
+            throw new Exception("No hay eventos suscritos");
+        }
     }
 }

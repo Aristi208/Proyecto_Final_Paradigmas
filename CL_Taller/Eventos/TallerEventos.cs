@@ -1,8 +1,6 @@
 ﻿using CL_Taller.CPago;
+using CL_Taller.CReparacion;
 using CL_Taller.CVehiculo;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CL_Taller.Eventos
 {
@@ -23,23 +21,34 @@ namespace CL_Taller.Eventos
             publCancelacion.evt_cancelacion_pago += OnCancelacionPago;
         }
 
-        private void OnEntradaVehiculo(Carro carro)
+        private string OnEntradaVehiculo(Vehiculo vehiculo)
         {
-            Console.WriteLine($"[ENTRADA] Se registró ingreso del vehículo: {carro}");
+            return $"Vehículo ingresado correctamente -> {vehiculo}";
         }
 
-        private void OnFinalizacionReparacion()
+        private string OnFinalizacionReparacion(Reparacion reparacion)
         {
-            Console.WriteLine($"[FINALIZACIÓN] Una reparación ha sido completada.");
+            return $"Reparación finalizada -> {reparacion}";
         }
 
-        private void OnCancelacionPago(Factura factura)
+        private string OnCancelacionPago(Factura factura)
         {
-            Console.WriteLine($"[PAGO] Se procesó pago de factura: {factura}");
+            return $"Factura pagada correctamente -> {factura}";
         }
 
-        public Publ_entrada PublEntrada { get => publEntrada; }
-        public Publ_finalizacion PublFinalizacion { get => publFinalizacion; }
-        public Publ_cancelacion_pago PublCancelacion { get => publCancelacion; }
+        public Publ_entrada PublEntrada
+        {
+            get => publEntrada;
+        }
+
+        public Publ_finalizacion PublFinalizacion
+        {
+            get => publFinalizacion;
+        }
+
+        public Publ_cancelacion_pago PublCancelacion
+        {
+            get => publCancelacion;
+        }
     }
 }

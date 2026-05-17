@@ -12,11 +12,11 @@ namespace CL_Taller.CReparacion
         private ulong id;
         private Vehiculo vehiculo;
         private DateTime fecha;
-        private List<Repuesto> l_repuestos;
         private List<Mecanico> l_mecanicos;
         private bool rep_terminada;
         private IVehiculo ivehiculo;
         private List<string> arreglos;
+        private ulong valor_total;
 
         // TODO: IVehiculos para inyectar tmb se debe meter al constructor y mirar q más se puede meter al constructor
         public Reparacion(Vehiculo vehiculo, IVehiculo ivehiculo)
@@ -26,18 +26,15 @@ namespace CL_Taller.CReparacion
             rep_terminada = false;
             Ivehiculo = ivehiculo;
             arreglos = new List<string>();
-            l_repuestos = new List<Repuesto>();
             l_mecanicos = new List<Mecanico>();
+            Valor_total = 0;
             Validar();
         }
          
-        internal Vehiculo Vehiculo { get => vehiculo; 
+        public Vehiculo Vehiculo { get => vehiculo; 
             set => vehiculo = value; }
         public DateTime Fecha { get => fecha; }
-        internal List<Repuesto> L_repuestos { get => l_repuestos; 
-            set => l_repuestos =  !Rep_terminada ? 
-                value : throw new Exception("No se puede añadir repuesto en una reparacion terminada"); }
-        internal List<Mecanico> L_mecanicos { get => l_mecanicos; 
+        public List<Mecanico> L_mecanicos { get => l_mecanicos; 
             set => l_mecanicos = !Rep_terminada ? 
                 value : throw new Exception("No se puede añadir mecanicos en una reparacion terminada"); }
         public bool Rep_terminada { get => rep_terminada; set => rep_terminada = !Rep_terminada ? 
@@ -45,35 +42,48 @@ namespace CL_Taller.CReparacion
         public IVehiculo Ivehiculo { get => ivehiculo; set => ivehiculo = value; }
         public List<string> Arreglos { get => arreglos; }
         public ulong Id { get => id; set => id = value; }
+        public ulong Valor_total { get => valor_total; set => valor_total = value; }
 
         public void CalibrarSensores()
         {
-            arreglos.Add(ivehiculo.CalibrarSensores());
+            var resultado = ivehiculo.CalibrarSensores();
+            arreglos.Add(resultado.Item1);
+            Valor_total += resultado.Item2;
         }
 
         public void CambiarLlantas()
         {
-            arreglos.Add(ivehiculo.CambiarLlantas());
+            var resultado = ivehiculo.CambiarLlantas();
+            arreglos.Add(resultado.Item1);
+            Valor_total += resultado.Item2;
         }
 
         public void CambiarPieza(Repuesto repuesto)
         {
-            arreglos.Add(ivehiculo.CambiarPieza(repuesto));
+            var resultado = ivehiculo.CambiarPieza(repuesto);
+            arreglos.Add(resultado.Item1);
+            Valor_total += resultado.Item2;
         }
 
         public void DesconexionBateria()
         {
-            arreglos.Add(ivehiculo.DesconexionBateria());
+            var resultado = ivehiculo.DesconexionBateria();
+            arreglos.Add(resultado.Item1);
+            Valor_total += resultado.Item2;
         }
 
         public void Escaner()
         {
-            arreglos.Add(ivehiculo.Escaner());
+            var resultado = ivehiculo.Escaner();
+            arreglos.Add(resultado.Item1);
+            Valor_total += resultado.Item2;
         }
 
         public void PuestaAPunto()
         {
-            arreglos.Add(ivehiculo.PuestaAPunto());
+            var resultado = ivehiculo.PuestaAPunto();
+            arreglos.Add(resultado.Item1);
+            Valor_total += resultado.Item2;
         }
 
         public void Validar()
@@ -88,13 +98,9 @@ namespace CL_Taller.CReparacion
                 ? string.Join(", ", L_mecanicos)
                 : "Sin mecánicos asignados";
 
-            string repuestos = L_repuestos != null && L_repuestos.Count > 0
-                ? string.Join(", ", L_repuestos)
-                : "Sin repuestos";
-
             return $"Reparación | Vehículo: {Vehiculo} | Fecha: {Fecha:dd/MM/yyyy} | " +
                    $"Terminada: {Rep_terminada} | Mecánicos: [{mecanicos}] | " +
-                   $"Repuestos: [{repuestos}] | Arreglos: [{string.Join(", ", Arreglos)}]";
+                   $"Arreglos: [{string.Join(", ", Arreglos)}]";
         }
 
     }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CL_Taller.Interfaces
 {
-    internal interface IValidable
+    public interface IValidable
     {
         void Validar();
 

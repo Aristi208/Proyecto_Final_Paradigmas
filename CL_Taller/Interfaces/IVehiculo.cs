@@ -7,12 +7,12 @@ namespace CL_Taller.Interfaces
 {
     public interface IVehiculo
     {
-        abstract string PuestaAPunto();
-        abstract string Escaner();
-        abstract string DesconexionBateria();
-        abstract string CambiarLlantas();
-        abstract string CalibrarSensores();
-        abstract string CambiarPieza(Repuesto repuesto);
+        abstract Tuple<string, ulong> PuestaAPunto();
+        abstract Tuple<string, ulong> Escaner();
+        abstract Tuple<string, ulong> DesconexionBateria();
+        abstract Tuple<string, ulong> CambiarLlantas();
+        abstract Tuple<string, ulong> CalibrarSensores();
+        abstract Tuple<string, ulong> CambiarPieza(Repuesto repuesto);
 
 
     }

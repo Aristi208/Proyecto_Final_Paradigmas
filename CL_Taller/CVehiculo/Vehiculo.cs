@@ -37,20 +37,20 @@ namespace CL_Taller.CVehiculo
         public ushort Ano { get => ano; 
             set => ano = (value >= RglsVehiculo.ano_min && value <= DateTime.Now.Year + RglsVehiculo.ano_max_sum) ?
                 value : throw new Exception("Año no valido"); }
-        internal Cliente Dueno_vehiculo { get => dueno_vehiculo; 
+        public Cliente Dueno_vehiculo { get => dueno_vehiculo; 
             set => dueno_vehiculo = value; }
 
-        public abstract string CalibrarSensores();
+        public abstract Tuple<string, ulong> CalibrarSensores();
 
-        public abstract string CambiarLlantas();
+        public abstract Tuple<string, ulong> CambiarLlantas();
 
-        public abstract string CambiarPieza(Repuesto repuesto);
+        public abstract Tuple<string, ulong> CambiarPieza(Repuesto repuesto);
 
-        public abstract string DesconexionBateria();
+        public abstract Tuple<string, ulong> DesconexionBateria();
 
-        public abstract string Escaner();
+        public abstract Tuple<string, ulong> Escaner();
 
-        public abstract string PuestaAPunto();
+        public abstract Tuple<string, ulong> PuestaAPunto();
 
         public void Validar()
         {

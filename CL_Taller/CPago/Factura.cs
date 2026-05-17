@@ -1,5 +1,6 @@
 ﻿using CL_Taller.CPersona;
 using CL_Taller.CReparacion;
+using CL_Taller.Eventos;
 using CL_Taller.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace CL_Taller.CPago
 {
-    public class Factura : IValidable
+    public class Factura 
     {
         private IPago ipago;
         private Reparacion reparacion;
@@ -22,7 +23,7 @@ namespace CL_Taller.CPago
             this.reparacion = reparacion;
             this.cliente = cliente;
             estado = false;
-            total = CalcularTotal(reparacion);
+            total = reparacion.Valor_total;
             val_reparacion = total;
 
             // Seleccionar tipo de pago según estado de crédito del cliente
@@ -39,20 +40,18 @@ namespace CL_Taller.CPago
         public IPago Ipago { get => ipago; }
         public bool Estado { get => estado; }
 
-        public ulong CalcularTotal(Reparacion reparacion)
+        public string ProcesarPago(Publ_cancelacion_pago eventoPago)
         {
-            return (ulong)reparacion.L_repuestos.Sum(r => (decimal)r.Valor);
-        }
+            if (estado)
+                return "⚠ La factura ya fue pagada";
 
-        public string ProcesarPago()
-        {
-            if (estado == true)
-                return "⚠ Esta factura ya fue pagada.";
+            string resultado = ipago.RealizarPago(total);
 
-            var resultado = ipago.RealizarPago(total);
             estado = true;
 
-            return resultado;
+            string evento = eventoPago.InformarPago(this);
+
+            return resultado + "\n" + evento;
         }
 
         public void CambiarMetodoPago(IPago nuevoPago)

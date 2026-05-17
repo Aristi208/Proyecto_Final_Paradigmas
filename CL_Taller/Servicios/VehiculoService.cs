@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace CL_Taller.Servicios
 {
-    internal class VehiculoService
+    public class VehiculoService
     {
 
         private List<Vehiculo> l_vehiculos = new();

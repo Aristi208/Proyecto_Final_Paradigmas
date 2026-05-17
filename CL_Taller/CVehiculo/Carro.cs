@@ -14,16 +14,16 @@ namespace CL_Taller.CVehiculo
         {
         }
 
-        public abstract override string CalibrarSensores();
+        public abstract override Tuple<string, ulong> CalibrarSensores();
 
-        public abstract override string CambiarLlantas(); 
+        public abstract override Tuple<string, ulong> CambiarLlantas(); 
 
-        public abstract override string CambiarPieza(Repuesto repuesto); 
+        public abstract override Tuple<string, ulong> CambiarPieza(Repuesto repuesto); 
 
-        public abstract override string DesconexionBateria(); 
+        public abstract override Tuple<string, ulong> DesconexionBateria(); 
 
-        public abstract override string Escaner(); 
+        public abstract override Tuple<string, ulong> Escaner(); 
 
-        public abstract override string PuestaAPunto(); 
+        public abstract override Tuple<string, ulong> PuestaAPunto(); 
     }
 }

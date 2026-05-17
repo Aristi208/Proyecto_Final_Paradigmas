@@ -1,4 +1,5 @@
 ﻿using CL_Taller.CPago;
+using CL_Taller.CPersona;
 using CL_Taller.CReparacion;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace CL_Taller.Servicios
 {
-    internal class FacturaService
+    public class FacturaService
     {
 
         private List<Factura> l_facturas = new();
@@ -45,15 +46,14 @@ namespace CL_Taller.Servicios
                 .ToDictionary(g => g.Key, g => (g.Count(), (ulong)g.Sum(f => (decimal)f.Total)));
         }
 
-        public ulong CalcularTotal(Reparacion rep)
+        public ulong CalcularTotal(Reparacion rep, Cliente cliente)
         {
-            return new Factura(rep).Total;
+            return new Factura(rep, cliente).Total;
         }
 
-        public Factura GenerarFactura(Reparacion reparacion)
+        public Factura GenerarFactura(Reparacion reparacion, Cliente cliente)
         {
-            Factura factura = new(reparacion);
-            factura.Total = CalcularTotal(reparacion);
+            Factura factura = new(reparacion, cliente);
             AgregarFactura(factura);
             return factura;
         }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CL_Taller.CVehiculo
 {
-    internal class Electrico : Carro, IValidable
+    public class Electrico : Carro, IValidable
     {
         private ushort autonomia;
 
@@ -20,35 +20,52 @@ namespace CL_Taller.CVehiculo
             set => autonomia = value >= RglsVehiculo.min_autonomia && value <= RglsVehiculo.max_autonomia ?
                 value : throw new Exception("Autonomia no valida"); }
 
-        public override string CalibrarSensores()
+        public override Tuple<string, ulong> CalibrarSensores()
         {
-            return $"Sensores calibrados en Carro Electrico - ${RglsVehiculo.precio_calibrar_Sensores}";
+            ulong precio = RglsVehiculo.precio_calibrar_Sensores;
+            string mensaje = $"Sensores calibrados en Carro Electrico - ${precio}";
+            
+            return new Tuple<string, ulong> (mensaje, precio);
         }
 
-        public override string CambiarLlantas()
+        public override Tuple<string, ulong> CambiarLlantas()
         {
-            return $"Llantas cambiadas en Carro Electrico - ${RglsVehiculo.precio_cambiar_llantas}";
+            ulong precio = RglsVehiculo.precio_cambiar_llantas;
+            string mensaje = $"Llantas cambiadas en Carro Electrico - ${precio}";
+
+            return new Tuple<string, ulong>(mensaje, precio);
         }
 
-        public override string CambiarPieza(Repuesto repuesto)
+        public override Tuple<string, ulong> CambiarPieza(Repuesto repuesto)
         {
             ulong precio = RglsVehiculo.precio_Cambiar_pieza + repuesto.Valor;
-            return $"Pieza cambiada en Carro Electrico {repuesto.Nombre} - ${precio}";
+            string mensaje = $"Pieza cambiada en Carro Electrico {repuesto.Nombre} - ${precio}";
+
+            return new Tuple<string, ulong>(mensaje, precio);
         }
 
-        public override string DesconexionBateria()
+        public override Tuple<string, ulong> DesconexionBateria()
         {
-            return $"Desconexion de Bateria Carro Electrico - ${RglsVehiculo.precio_Desconexion_bateria}";
+            ulong precio = RglsVehiculo.precio_Desconexion_bateria;
+            string mensaje = $"Desconexion de Bateria Carro Electrico - ${precio}";
+
+            return new Tuple<string, ulong>(mensaje, precio);
         }
 
-        public override string Escaner()
+        public override Tuple<string, ulong> Escaner()
         {
-            return $"Escaner realizado en Carro Electrico - ${RglsVehiculo.precio_escaner}";
+            ulong precio = RglsVehiculo.precio_escaner;
+            string mensaje = $"Escaner realizado en Carro Electrico - ${precio}";
+
+            return new Tuple<string, ulong>(mensaje, precio);
         }
 
-        public override string PuestaAPunto()
+        public override Tuple<string, ulong> PuestaAPunto()
         {
-            return $"Puesta a punto en Carro Electrico - ${RglsVehiculo.precio_puesta_A_Punta}";
+            ulong precio = RglsVehiculo.precio_puesta_A_Punta;
+            string mensaje = $"Puesta a punto en Carro Electrico - ${precio}";
+
+            return new Tuple<string, ulong>(mensaje, precio);
         }
 
         public void Validar()

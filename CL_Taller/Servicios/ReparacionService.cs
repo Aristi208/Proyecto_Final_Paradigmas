@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CL_Taller.Servicios
 {
-    internal class ReparacionService
+    public class ReparacionService
     {
 
         private List<Reparacion> l_reparaciones = new();
@@ -44,16 +44,6 @@ namespace CL_Taller.Servicios
                 return true;
             }
             return false;
-        }
-
-        public ulong CalcularCostoTotal(Reparacion rep)
-        {
-            return (ulong)rep.L_repuestos.Sum(r => (decimal)r.Valor);
-        }
-
-        public void AgregarRepuesto(Repuesto r)
-        {
-            L_reparaciones.LastOrDefault()?.L_repuestos.Add(r);
         }
     }
 }

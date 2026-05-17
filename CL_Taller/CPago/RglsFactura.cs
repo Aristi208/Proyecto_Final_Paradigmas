@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CL_Taller.CPago
 {
-    internal class RglsFactura
+    public class RglsFactura
     {
 
         public static readonly byte valor_nulo = 0;
