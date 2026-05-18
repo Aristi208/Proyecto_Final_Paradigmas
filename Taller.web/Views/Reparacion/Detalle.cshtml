@@ -1,0 +1,105 @@
+﻿@{
+    var rep = ViewBag.Reparacion as CL_Taller.CReparacion.Reparacion;
+    int index = ViewBag.Index;
+}
+
+<h2>Detalle de reparación</h2>
+<p><strong>Vehículo:</strong> @rep.Vehiculo</p>
+<p><strong>Fecha:</strong> @rep.Fecha.ToString("dd/MM/yyyy")</td></p>
+<p><strong>Terminada:</strong> @rep.Rep_terminada</p>
+
+<h4>Mecánicos asignados</h4>
+@if (rep.L_mecanicos != null && rep.L_mecanicos.Count > 0)
+{
+    <ul>
+        @foreach (var m in rep.L_mecanicos)
+        {
+            <li>@m.Nombre - @m.Especialidad</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Sin mecánicos asignados.</p>
+}
+
+@if (!rep.Rep_terminada)
+{
+    <form method="post" action="/Reparacion/AgregarMecanicoDetalle">
+        <input type="hidden" name="index" value="@index" />
+        <select name="idMecanico">
+            @foreach (var m in ViewBag.Mecanicos)
+            {
+                <option value="@m.Id">@m.Nombre - @m.Especialidad</option>
+            }
+        </select>
+        <button type="submit">Agregar mecánico</button>
+    </form>
+}
+
+<h4>Procesos realizados</h4>
+@if (rep.Arreglos != null && rep.Arreglos.Count > 0)
+{
+    <ul>
+        @foreach (var a in rep.Arreglos)
+        {
+            <li>@a</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Sin procesos registrados.</p>
+}
+
+@if (!rep.Rep_terminada)
+{
+    <form method="post" action="/Reparacion/AgregarProceso">
+        <input type="hidden" name="index" value="@index" />
+        <select name="proceso">
+            <option value="Escaner">Escáner</option>
+            <option value="CambiarLlantas">Cambiar llantas</option>
+            <option value="CalibrarSensores">Calibrar sensores</option>
+            <option value="DesconexionBateria">Desconexión batería</option>
+            <option value="PuestaAPunto">Puesta a punto</option>
+        </select>
+        <button type="submit">Agregar proceso</button>
+    </form>
+}
+
+@if (!rep.Rep_terminada)
+{
+    <h4>Cambiar repuesto</h4>
+    <form method="post" action="/Reparacion/AgregarRepuesto">
+        <input type="hidden" name="index" value="@index" />
+        <label>Nombre del repuesto</label>
+        <input type="text" name="nombre" /><br />
+        <label>Proveedor</label>
+        <input type="text" name="proveedor" /><br />
+        <label>Valor</label>
+        <input type="number" name="valor" /><br /><br />
+        <button type="submit">Agregar repuesto</button>
+    </form>
+}
+
+@if (rep.L_repuestos != null && rep.L_repuestos.Count > 0)
+{
+    <h4>Repuestos agregados</h4>
+    <ul>
+        @foreach (var r in rep.L_repuestos)
+        {
+            <li>@r.Nombre - @r.Proveedor - $@r.Valor</li>
+        }
+    </ul>
+}
+
+<br />
+@if (!rep.Rep_terminada)
+{
+    <form method="post" action="/Reparacion/TerminarReparacion">
+        <input type="hidden" name="index" value="@index" />
+        <button type="submit">Terminar reparación</button>
+    </form>
+}
+
+<a href="/Reparacion">Volver</a>

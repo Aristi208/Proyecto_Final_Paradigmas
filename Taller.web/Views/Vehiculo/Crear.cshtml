@@ -1,0 +1,62 @@
+﻿<h2>Registrar vehículo</h2>
+
+<form method="post">
+    <label>Placa</label>
+    <input type="text" name="placa" placeholder="ABC123" /><br />
+
+    <label>Marca</label>
+    <input type="text" name="marca" /><br />
+
+    <label>Modelo</label>
+    <input type="text" name="modelo" /><br />
+
+    <label>Año</label>
+    <input type="number" name="ano" /><br />
+
+    <label>Tipo de vehículo</label>
+    <select name="tipo" id="tipo" onchange="mostrarCampos()">
+        <option value="">Seleccione...</option>
+        <option value="Gasolina">Gasolina</option>
+        <option value="Electrico">Eléctrico</option>
+        <option value="Hibrido">Híbrido</option>
+    </select><br /><br />
+
+    <div id="campoGasolina" style="display:none">
+        <label>Cantidad de cilindros</label>
+        <input type="number" name="cilindros" /><br />
+    </div>
+
+    <div id="campoElectrico" style="display:none">
+        <label>Autonomía (km)</label>
+        <input type="number" name="autonomia" /><br />
+    </div>
+
+    <div id="campoHibrido" style="display:none">
+        <label>Cantidad de baterías</label>
+        <input type="number" name="baterias" /><br />
+    </div>
+    <label>Cliente</label>
+    <select name="idCliente">
+        @foreach (var c in ViewBag.Clientes)
+        {
+            <option value="@c.Id">@c.Nombre</option>
+        }
+    </select><br /><br />
+    <br />
+    <button type="submit">Registrar</button>
+</form>
+
+<script>
+    function mostrarCampos() {
+        document.getElementById('campoGasolina').style.display = 'none';
+        document.getElementById('campoElectrico').style.display = 'none';
+        document.getElementById('campoHibrido').style.display = 'none';
+
+        var tipo = document.getElementById('tipo').value;
+        if (tipo === 'Gasolina') document.getElementById('campoGasolina').style.display = 'block';
+        if (tipo === 'Electrico') document.getElementById('campoElectrico').style.display = 'block';
+        if (tipo === 'Hibrido') document.getElementById('campoHibrido').style.display = 'block';
+    }
+</script>
+
+<a href="/Vehiculo">Volver</a>

@@ -1,0 +1,3 @@
+﻿12345612,Carlos Perez,3001234567,false
+65432121,Ana Gomez,3109876543,true
+11122222,Luis Martinez,3205554433,false

@@ -1,0 +1,34 @@
+﻿@model List<CL_Taller.CPersona.Mecanico>
+
+<h2>Mecánicos</h2>
+
+<a href="/Mecanico/Crear">Registrar mecánico</a>
+
+@if (Model.Count == 0)
+{
+    <p>No hay mecánicos registrados.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Especialidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.Id</td>
+                    <td>@m.Nombre</td>
+                    <td>@m.Telefono</td>
+                    <td>@m.Especialidad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

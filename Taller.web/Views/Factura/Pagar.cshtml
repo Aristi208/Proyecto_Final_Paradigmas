@@ -1,0 +1,16 @@
+﻿<h2>Procesar pago</h2>
+
+<form method="post" action="/Factura/ProcesarPago">
+    <input type="hidden" name="index" value="@ViewBag.Index" />
+    
+    <label>Tipo de pago</label>
+    <select name="tipoPago">
+        <option value="Contado">Contado</option>
+        <option value="Debito">Tarjeta débito</option>
+        <option value="Credito">Crédito</option>
+    </select><br /><br />
+
+    <button type="submit">Confirmar pago</button>
+</form>
+
+<a href="/Factura">Volver</a>

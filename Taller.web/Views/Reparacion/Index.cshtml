@@ -1,0 +1,59 @@
+﻿@model List<CL_Taller.CReparacion.Reparacion>
+<h2>Reparaciones</h2>
+@if (Model.Count == 0)
+{
+    <p>No hay reparaciones registradas.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Vehículo</th>
+                <th>Fecha</th>
+                <th>Mecánicos</th>
+                <th>Terminada</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].Vehiculo</td>
+                    <td>@Model[i].Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (Model[i].L_mecanicos != null && Model[i].L_mecanicos.Count > 0)
+                        {
+                            @foreach (var m in Model[i].L_mecanicos)
+                            {
+                                <span>@m.Nombre</span>
+                            
+                                <br />
+                            }
+                        }
+                        else
+                        {
+                            <span>Sin mecánicos</span>
+                        }
+                    </td>
+                    <td>@Model[i].Rep_terminada</td>
+                    <td>
+                        @if (!Model[i].Rep_terminada)
+                        {
+                            <form method="post" action="/Reparacion/TerminarReparacion">
+                                <input type="hidden" name="index" value="@i" />
+                                <button type="submit">Terminar</button>
+                            </form>
+                            <a href="/Reparacion/Detalle/@i">Ver detalle</a>
+                        }
+                        else
+                        {
+                            <span>✔️ Terminada</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

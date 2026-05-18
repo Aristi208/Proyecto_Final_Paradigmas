@@ -1,0 +1,23 @@
+﻿<h2>Nueva factura</h2>
+
+<form method="post">
+    <label>Reparación</label>
+    <select name="indexReparacion">
+        @for (int i = 0; i < ViewBag.Reparaciones.Count; i++)
+        {
+            <option value="@i">@ViewBag.Reparaciones[i].Vehiculo.Placa - @ViewBag.Reparaciones[i].Fecha.ToString("dd/MM/yyyy")</option>
+        }
+    </select><br />
+
+    <label>Cliente</label>
+    <select name="idCliente">
+        @foreach (var c in ViewBag.Clientes)
+        {
+            <option value="@c.Id">@c.Nombre</option>
+        }
+    </select><br />
+
+    <button type="submit">Generar factura</button>
+</form>
+
+<a href="/Factura">Volver</a>

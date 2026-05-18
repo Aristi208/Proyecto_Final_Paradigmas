@@ -1,0 +1,12 @@
+﻿@model Taller.web.Models.ErrorViewModel
+
+<h2>Ocurrió un error</h2>
+
+<p>@Model.Mensaje</p>
+
+@if (Model.ShowRequestId)
+{
+    <p>ID: @Model.RequestId</p>
+}
+
+<a href="/">Volver al inicio</a>

@@ -1,0 +1,40 @@
+﻿@{
+    var rol = Context.Session.GetString("Rol");
+}
+
+<div style="text-align:center; margin-top:50px;">
+    <h1>Bienvenido al Taller</h1>
+
+    @if (rol == null)
+    {
+        <p>¿Cómo deseas ingresar?</p>
+        <a href="/Home/SeleccionarRol?rol=Cliente" class="btn btn-primary">Soy Cliente</a>
+        <a href="/Home/SeleccionarRol?rol=Mecanico" class="btn btn-success">Soy Mecánico</a>
+    }
+    else if (rol == "Mecanico")
+    {
+        <p>Ingresaste como: <strong>Mecánico</strong></p>
+        <a href="/Home/SeleccionarRol?rol=" class="btn btn-secondary">Cambiar rol</a>
+    }
+    else if (rol == "Cliente")
+    {
+        var idCliente = Context.Session.GetString("IdCliente");
+
+        @if (idCliente == null)
+        {
+            <p>Ingresa tu ID para ver tu información</p>
+            <form method="post" action="/Home/IngresarCliente">
+                <input type="number" name="idCliente" placeholder="Tu ID" />
+                <button type="submit">Ingresar</button>
+            </form>
+        }
+        else
+        {
+            <p>Bienvenido, <strong>@Context.Session.GetString("NombreCliente")</strong></p>
+            <a href="/Home/CerrarCliente" class="btn btn-secondary">Salir</a>
+        }
+
+        <br />
+        <a href="/Home/SeleccionarRol?rol=" class="btn btn-secondary">Cambiar rol</a>
+    }
+</div>

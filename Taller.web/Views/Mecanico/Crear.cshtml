@@ -1,0 +1,24 @@
+﻿<h2>Registrar mecánico</h2>
+
+<form method="post">
+    <label>ID</label>
+    <input type="number" name="id" /><br />
+
+    <label>Nombre</label>
+    <input type="text" name="nombre" /><br />
+
+    <label>Teléfono</label>
+    <input type="number" name="telefono" /><br />
+
+    <label>Especialidad</label>
+    <select name="especialidad">
+        @foreach (var e in ViewBag.Especialidades)
+        {
+            <option value="@e">@e</option>
+        }
+    </select><br /><br />
+
+    <button type="submit">Registrar</button>
+</form>
+
+<a href="/Mecanico">Volver</a>

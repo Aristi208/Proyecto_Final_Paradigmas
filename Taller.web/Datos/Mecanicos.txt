@@ -1,0 +1,3 @@
+﻿101211301,Juan Torres,3001112233,MecanicoGeneral
+121233002,Pedro Ramirez,3109998877,ElectricistaAutomotriz
+102213203,Sofia Diaz,3206667755,TecnicoVehiculosElectricos

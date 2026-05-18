@@ -1,0 +1,15 @@
+﻿<h2>Nueva reparación</h2>
+
+<form method="post">
+    <label>Placa del vehículo</label>
+    <select name="placa">
+        @foreach (var v in ViewBag.Vehiculos)
+        {
+            <option value="@v.Placa">@v.Placa - @v.Marca @v.Modelo</option>
+        }
+    </select><br />
+
+    <button type="submit">Registrar</button>
+</form>
+
+<a href="/Reparacion">Volver</a>
