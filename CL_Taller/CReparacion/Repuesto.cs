@@ -12,7 +12,7 @@ namespace CL_Taller.CReparacion
         private string nombre;
         private string proveedor;
         private DateTime fecha_compra;
-        private ulong valor;
+        private ulong valor;   
 
         public Repuesto(string nombre, string proveedor, DateTime fecha_compra, ulong valor)
         {
@@ -42,6 +42,8 @@ namespace CL_Taller.CReparacion
             this.Fecha_compra = fecha_compra;
             this.Valor = valor;
         }
+
+
 
         public override string ToString()
         {

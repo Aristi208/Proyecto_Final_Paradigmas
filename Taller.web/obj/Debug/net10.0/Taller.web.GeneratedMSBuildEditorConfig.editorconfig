@@ -19,97 +19,101 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = Taller.web
 build_property.RootNamespace = Taller.web
-build_property.ProjectDir = C:\Users\diego\OneDrive\Desktop\Proyecto_Final_Paradigmas\Taller.web\
+build_property.ProjectDir = C:\Proyecto_Final_Paradigmas\Taller.web\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\diego\OneDrive\Desktop\Proyecto_Final_Paradigmas\Taller.web
+build_property.MSBuildProjectDirectory = C:\Proyecto_Final_Paradigmas\Taller.web
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Cliente/Crear.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Cliente/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxDcmVhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Cliente/Index.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Cliente/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Crear.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxDcmVhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Index.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxEZXRhbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Misfacturas.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Misfacturas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxNaXNmYWN0dXJhcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Pagar.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Factura/Pagar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxQYWdhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Home/Index.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Home/Privacy.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Mecanico/Crear.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Mecanico/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjYW5pY29cQ3JlYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Mecanico/Index.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Mecanico/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjYW5pY29cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Reparacion/Crear.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Reparacion/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYXJhY2lvblxDcmVhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Reparacion/Detalle.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Reparacion/Detalle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYXJhY2lvblxEZXRhbGxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Reparacion/Index.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Reparacion/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYXJhY2lvblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Shared/Error.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Vehiculo/Crear.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Vehiculo/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9cQ3JlYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Vehiculo/index.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Vehiculo/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Vehiculo/Misvehiculos.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Vehiculo/Misvehiculos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWN1bG9cTWlzdmVoaWN1bG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/_ViewImports.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/_ViewStart.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/diego/OneDrive/Desktop/Proyecto_Final_Paradigmas/Taller.web/Views/Shared/_Layout.cshtml]
+[C:/Proyecto_Final_Paradigmas/Taller.web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-jcy4i3jnmo

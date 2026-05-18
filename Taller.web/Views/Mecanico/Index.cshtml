@@ -1,34 +1,62 @@
 ﻿@model List<CL_Taller.CPersona.Mecanico>
 
-<h2>Mecánicos</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<a href="/Mecanico/Crear">Registrar mecánico</a>
+    <h2>Mecánicos</h2>
+
+    <a href="/Mecanico/Crear" class="btn btn-success">
+        + Registrar mecánico
+    </a>
+
+</div>
 
 @if (Model.Count == 0)
 {
-    <p>No hay mecánicos registrados.</p>
+    <div class="alert alert-warning">
+        No hay mecánicos registrados.
+    </div>
 }
 else
 {
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Especialidad</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var m in Model)
-            {
+    <div class="table-responsive">
+
+        <table class="table table-hover align-middle">
+
+            <thead>
                 <tr>
-                    <td>@m.Id</td>
-                    <td>@m.Nombre</td>
-                    <td>@m.Telefono</td>
-                    <td>@m.Especialidad</td>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Especialidad</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+
+                @foreach (var m in Model)
+                {
+                    <tr>
+
+                        <td>@m.Id</td>
+
+                        <td>
+                            <strong>@m.Nombre</strong>
+                        </td>
+
+                        <td>@m.Telefono</td>
+
+                        <td>
+                            <span class="badge bg-dark">
+                                @m.Especialidad
+                            </span>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
 }

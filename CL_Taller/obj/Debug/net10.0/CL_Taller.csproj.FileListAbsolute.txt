@@ -10,3 +10,15 @@ C:\Users\diego\OneDrive\Desktop\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\ne
 C:\Users\diego\OneDrive\Desktop\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\refint\CL_Taller.dll
 C:\Users\diego\OneDrive\Desktop\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.pdb
 C:\Users\diego\OneDrive\Desktop\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\ref\CL_Taller.dll
+C:\Proyecto_Final_Paradigmas\CL_Taller\bin\Debug\net10.0\CL_Taller.deps.json
+C:\Proyecto_Final_Paradigmas\CL_Taller\bin\Debug\net10.0\CL_Taller.dll
+C:\Proyecto_Final_Paradigmas\CL_Taller\bin\Debug\net10.0\CL_Taller.pdb
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.AssemblyInfoInputs.cache
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.AssemblyInfo.cs
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.csproj.CoreCompileInputs.cache
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.sourcelink.json
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.dll
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\refint\CL_Taller.dll
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\CL_Taller.pdb
+C:\Proyecto_Final_Paradigmas\CL_Taller\obj\Debug\net10.0\ref\CL_Taller.dll

@@ -1,15 +1,52 @@
-﻿<h2>Nueva reparación</h2>
+﻿<h2 class="mb-4">
+    Nueva reparación
+</h2>
 
-<form method="post">
-    <label>Placa del vehículo</label>
-    <select name="placa">
-        @foreach (var v in ViewBag.Vehiculos)
-        {
-            <option value="@v.Placa">@v.Placa - @v.Marca @v.Modelo</option>
-        }
-    </select><br />
+<div class="card-custom">
 
-    <button type="submit">Registrar</button>
-</form>
+    <form method="post">
 
-<a href="/Reparacion">Volver</a>
+        <div class="mb-4">
+
+            <label class="form-label">
+                Seleccionar vehículo
+            </label>
+
+            <select name="placa"
+                    class="form-select">
+
+                @foreach (var v in ViewBag.Vehiculos)
+                {
+                    <option value="@v.Placa">
+
+                        🚗 @v.Placa
+                        -
+                        @v.Marca
+                        @v.Modelo
+
+                    </option>
+                }
+
+            </select>
+
+        </div>
+
+        <div class="d-flex gap-2">
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                Registrar reparación
+            </button>
+
+            <a href="/Reparacion"
+                   class="btn btn-outline-secondary">
+
+                Volver
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

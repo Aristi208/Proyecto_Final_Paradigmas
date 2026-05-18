@@ -1,19 +1,42 @@
-﻿<h2>Registrar cliente</h2>
+﻿<h2 class="mb-4">Registrar cliente</h2>
 
-<form method="post">
-    <label>ID</label>
-    <input type="number" name="id" /><br />
+<div class="card-custom">
 
-    <label>Nombre</label>
-    <input type="text" name="nombre" /><br />
+    <form method="post">
 
-    <label>Teléfono</label>
-    <input type="number" name="telefono" /><br />
+        <div class="mb-3">
+            <label class="form-label">ID</label>
+            <input type="number" name="id" class="form-control" />
+        </div>
 
-    <label>Tiene crédito</label>
-    <input type="checkbox" name="estadoCredito" value="true" /><br />
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" />
+        </div>
 
-    <button type="submit">Registrar</button>
-</form>
+        <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="number" name="telefono" class="form-control" />
+        </div>
 
-<a href="/Cliente">Volver</a>
+        <div class="form-check mb-4">
+            <input type="checkbox"
+                   name="estadoCredito"
+                   value="true"
+                   class="form-check-input" />
+
+            <label class="form-check-label">
+                Tiene crédito
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-dark">
+            Registrar cliente
+        </button>
+
+        <a href="/Cliente" class="btn btn-outline-secondary">
+            Volver
+        </a>
+
+    </form>
+</div>

@@ -1,105 +1,146 @@
 ﻿@{
     var rep = ViewBag.Reparacion as CL_Taller.CReparacion.Reparacion;
-    int index = ViewBag.Index;
+    string placa = ViewBag.Placa;
 }
 
-<h2>Detalle de reparación</h2>
-<p><strong>Vehículo:</strong> @rep.Vehiculo</p>
-<p><strong>Fecha:</strong> @rep.Fecha.ToString("dd/MM/yyyy")</td></p>
-<p><strong>Terminada:</strong> @rep.Rep_terminada</p>
+<h2 class="mb-4">
+    Detalle de reparación
+</h2>
 
-<h4>Mecánicos asignados</h4>
-@if (rep.L_mecanicos != null && rep.L_mecanicos.Count > 0)
-{
-    <ul>
-        @foreach (var m in rep.L_mecanicos)
-        {
-            <li>@m.Nombre - @m.Especialidad</li>
-        }
-    </ul>
-}
-else
-{
-    <p>Sin mecánicos asignados.</p>
-}
-
-@if (!rep.Rep_terminada)
-{
-    <form method="post" action="/Reparacion/AgregarMecanicoDetalle">
-        <input type="hidden" name="index" value="@index" />
-        <select name="idMecanico">
-            @foreach (var m in ViewBag.Mecanicos)
+<div class="card-custom mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <p><strong>Vehículo:</strong></p>
+            <h4>🚗 @rep.Vehiculo</h4>
+        </div>
+        <div class="col-md-4">
+            <p><strong>Fecha:</strong></p>
+            <h5>@rep.Fecha.ToString("dd/MM/yyyy")</h5>
+        </div>
+        <div class="col-md-4">
+            <p><strong>Estado:</strong></p>
+            @if (rep.Rep_terminada)
             {
-                <option value="@m.Id">@m.Nombre - @m.Especialidad</option>
+                <span class="badge-status success">Terminada</span>
             }
-        </select>
-        <button type="submit">Agregar mecánico</button>
-    </form>
-}
+            else
+            {
+                <span class="badge-status danger">En proceso</span>
+            }
+        </div>
+    </div>
+</div>
 
-<h4>Procesos realizados</h4>
-@if (rep.Arreglos != null && rep.Arreglos.Count > 0)
-{
-    <ul>
-        @foreach (var a in rep.Arreglos)
-        {
-            <li>@a</li>
-        }
-    </ul>
-}
-else
-{
-    <p>Sin procesos registrados.</p>
-}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card-custom mb-4">
+            <h4 class="mb-3">👨‍🔧 Mecánicos asignados</h4>
+            @if (rep.L_mecanicos != null && rep.L_mecanicos.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var m in rep.L_mecanicos)
+                    {
+                        <li class="list-group-item">
+                            <strong>@m.Nombre</strong>
+                            <span class="badge bg-dark float-end">@m.Especialidad</span>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted">Sin mecánicos asignados.</p>
+            }
+
+            @if (!rep.Rep_terminada)
+            {
+                <form method="post" action="/Reparacion/AgregarMecanicoDetalle" class="mt-4">
+                    <input type="hidden" name="placa" value="@placa" />
+                    <div class="input-group">
+                        <select name="idMecanico" class="form-select">
+                            @foreach (var m in ViewBag.Mecanicos)
+                            {
+                                <option value="@m.Id">@m.Nombre - @m.Especialidad</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-dark">Agregar</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card-custom mb-4">
+            <h4 class="mb-3">🛠️ Procesos realizados</h4>
+            @if (rep.Arreglos != null && rep.Arreglos.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var a in rep.Arreglos)
+                    {
+                        <li class="list-group-item">✅ @a</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted">Sin procesos registrados.</p>
+            }
+
+            @if (!rep.Rep_terminada)
+            {
+                <form method="post" action="/Reparacion/AgregarProceso" class="mt-4">
+                    <input type="hidden" name="placa" value="@placa" />
+                    <div class="input-group">
+                        <select name="proceso" class="form-select">
+                            <option value="Escaner">Escáner</option>
+                            <option value="CambiarLlantas">Cambiar llantas</option>
+                            <option value="CalibrarSensores">Calibrar sensores</option>
+                            <option value="DesconexionBateria">Desconexión batería</option>
+                            <option value="PuestaAPunto">Puesta a punto</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
 
 @if (!rep.Rep_terminada)
 {
-    <form method="post" action="/Reparacion/AgregarProceso">
-        <input type="hidden" name="index" value="@index" />
-        <select name="proceso">
-            <option value="Escaner">Escáner</option>
-            <option value="CambiarLlantas">Cambiar llantas</option>
-            <option value="CalibrarSensores">Calibrar sensores</option>
-            <option value="DesconexionBateria">Desconexión batería</option>
-            <option value="PuestaAPunto">Puesta a punto</option>
-        </select>
-        <button type="submit">Agregar proceso</button>
-    </form>
-}
-
-@if (!rep.Rep_terminada)
-{
-    <h4>Cambiar repuesto</h4>
-    <form method="post" action="/Reparacion/AgregarRepuesto">
-        <input type="hidden" name="index" value="@index" />
-        <label>Nombre del repuesto</label>
-        <input type="text" name="nombre" /><br />
-        <label>Proveedor</label>
-        <input type="text" name="proveedor" /><br />
-        <label>Valor</label>
-        <input type="number" name="valor" /><br /><br />
-        <button type="submit">Agregar repuesto</button>
-    </form>
-}
-
-@if (rep.L_repuestos != null && rep.L_repuestos.Count > 0)
-{
-    <h4>Repuestos agregados</h4>
-    <ul>
-        @foreach (var r in rep.L_repuestos)
+    <div class="card-custom mb-4">
+        <h4 class="mb-3">🔧 Agregar repuesto</h4>
+        @if (ViewBag.Repuestos.Count == 0)
         {
-            <li>@r.Nombre - @r.Proveedor - $@r.Valor</li>
+            <div class="alert alert-warning">No hay repuestos en inventario.</div>
         }
-    </ul>
+        else
+        {
+            <form method="post" action="/Reparacion/AgregarRepuesto">
+                <input type="hidden" name="placa" value="@placa" />
+                <div class="input-group">
+                    <select name="indexRepuesto" class="form-select">
+                        @for (int r = 0; r < ViewBag.Repuestos.Count; r++)
+                        {
+                            <option value="@r">@ViewBag.Repuestos[r].Nombre - $@ViewBag.Repuestos[r].Valor</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-warning">Agregar</button>
+                </div>
+            </form>
+        }
+    </div>
 }
 
-<br />
 @if (!rep.Rep_terminada)
 {
     <form method="post" action="/Reparacion/TerminarReparacion">
-        <input type="hidden" name="index" value="@index" />
-        <button type="submit">Terminar reparación</button>
+        <input type="hidden" name="placa" value="@placa" />
+        <button type="submit" class="btn btn-success btn-lg">✅ Terminar reparación</button>
     </form>
 }
 
-<a href="/Reparacion">Volver</a>
+<div class="mt-4">
+    <a href="/Reparacion" class="btn btn-outline-secondary">Volver</a>
+</div>

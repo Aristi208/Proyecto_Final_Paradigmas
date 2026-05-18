@@ -28,65 +28,81 @@ namespace Taller.web.Controllers
             return View(reparaciones);
         }
 
-        public IActionResult Crear()
-        {
-            ViewBag.Vehiculos = vehiculos;
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult TerminarReparacion(int index)
+public IActionResult TerminarReparacion(string placa)
         {
-            var reparacion = reparaciones[index];
+            var reparacion = reparaciones.FirstOrDefault(r => r.Vehiculo.Placa == placa && !r.Rep_terminada);
+            if (reparacion == null)
+            {
+                TempData["Error"] = "No se encontró reparación activa para ese vehículo";
+                return RedirectToAction("Index");
+            }
 
             if (reparacion.L_mecanicos == null || reparacion.L_mecanicos.Count == 0)
-                throw new Exception("No se puede terminar una reparación sin mecánicos asignados");
+            {
+                TempData["Error"] = "No se puede terminar una reparación sin mecánicos asignados";
+                return RedirectToAction("Detalle", new { placa });
+            }
 
             if (reparacion.Arreglos == null || reparacion.Arreglos.Count == 0)
-                throw new Exception("No se puede terminar una reparación sin procesos registrados");
+            {
+                TempData["Error"] = "No se puede terminar una reparación sin procesos registrados";
+                return RedirectToAction("Detalle", new { placa });
+            }
 
             reparacion.Rep_terminada = true;
             pubFinalizacion.InformarFinalizacion(reparacion);
+            TempData["Exito"] = $"Reparación del vehículo {placa} terminada correctamente";
             return RedirectToAction("Index");
         }
 
-        public IActionResult AgregarMecanico(int index)
-        {
-            ViewBag.Index = index;
-            ViewBag.Mecanicos = MecanicoController.mecanicos;
-            ViewBag.Reparacion = reparaciones[index];
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult AgregarMecanicoDetalle(int index, ulong idMecanico)
+        public IActionResult AgregarMecanicoDetalle(string placa, ulong idMecanico)
         {
-            var reparacion = reparaciones[index];
+            var reparacion = reparaciones.FirstOrDefault(r => r.Vehiculo.Placa == placa && !r.Rep_terminada);
+            if (reparacion == null)
+                return RedirectToAction("Index");
+
             var mecanico = MecanicoController.mecanicos.FirstOrDefault(m => m.Id == idMecanico);
             if (mecanico == null)
-                return RedirectToAction("Detalle", new { index });
+                return RedirectToAction("Detalle", new { placa });
 
             if (reparacion.L_mecanicos.Any(m => m.Id == idMecanico))
-                throw new Exception("Este mecánico ya está asignado a esta reparación");
+            {
+                TempData["Error"] = "Este mecánico ya está asignado a esta reparación";
+                return RedirectToAction("Detalle", new { placa });
+            }
 
             reparacion.L_mecanicos.Add(mecanico);
-            return RedirectToAction("Detalle", new { index });
+            TempData["Exito"] = $"Mecánico agregado correctamente";
+            return RedirectToAction("Detalle", new { placa });
         }
-        public IActionResult Detalle(int index)
+
+        public IActionResult Detalle(string placa)
         {
-            ViewBag.Index = index;
-            ViewBag.Reparacion = reparaciones[index];
+            var reparacion = reparaciones.FirstOrDefault(r => r.Vehiculo.Placa == placa && !r.Rep_terminada);
+            if (reparacion == null)
+                return RedirectToAction("Index");
+
+            ViewBag.Placa = placa;
+            ViewBag.Reparacion = reparacion;
             ViewBag.Mecanicos = MecanicoController.mecanicos;
+            ViewBag.Repuestos = AppState.Taller.l_repuestos;
             return View();
         }
 
         [HttpPost]
-        public IActionResult AgregarProceso(int index, string proceso)
+        public IActionResult AgregarProceso(string placa, string proceso)
         {
-            var reparacion = reparaciones[index];
+            var reparacion = reparaciones.FirstOrDefault(r => r.Vehiculo.Placa == placa && !r.Rep_terminada);
+            if (reparacion == null)
+                return RedirectToAction("Index");
 
             if (reparacion.Arreglos.Any(a => a.Contains(proceso)))
-                throw new Exception($"El proceso {proceso} ya fue agregado a esta reparación");
+            {
+                TempData["Error"] = $"El proceso {proceso} ya fue agregado a esta reparación";
+                return RedirectToAction("Detalle", new { placa });
+            }
 
             switch (proceso)
             {
@@ -96,16 +112,53 @@ namespace Taller.web.Controllers
                 case "DesconexionBateria": reparacion.DesconexionBateria(); break;
                 case "PuestaAPunto": reparacion.PuestaAPunto(); break;
             }
-            return RedirectToAction("Detalle", new { index });
+            TempData["Exito"] = $"Proceso agregado correctamente";
+            return RedirectToAction("Detalle", new { placa });
         }
+
         [HttpPost]
-        public IActionResult AgregarRepuesto(int index, string nombre, string proveedor, ulong valor)
+        public IActionResult AgregarRepuesto(string placa, int indexRepuesto)
         {
-            var reparacion = reparaciones[index];
-            var repuesto = new CL_Taller.CReparacion.Repuesto(nombre, proveedor, DateTime.Now, valor);
-            reparacion.L_repuestos.Add(repuesto);
+            var reparacion = reparaciones.FirstOrDefault(r => r.Vehiculo.Placa == placa && !r.Rep_terminada);
+            if (reparacion == null)
+                return RedirectToAction("Index");
+
+            var repuesto = AppState.Taller.l_repuestos[indexRepuesto];
             reparacion.CambiarPieza(repuesto);
-            return RedirectToAction("Detalle", new { index });
+            return RedirectToAction("Detalle", new { placa });
+        }
+        public IActionResult Crear()
+        {
+            ViewBag.Vehiculos = VehiculoController.vehiculos;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Crear(string placa)
+        {
+            var vehiculo = VehiculoController.vehiculos.FirstOrDefault(v => v.Placa == placa);
+            if (vehiculo == null)
+            {
+                TempData["Error"] = "Vehículo no encontrado";
+                return RedirectToAction("Crear");
+            }
+
+            if (reparaciones.Any(r => r.Vehiculo.Placa == placa && !r.Rep_terminada))
+            {
+                TempData["Error"] = "Este vehículo ya tiene una reparación activa sin terminar";
+                return RedirectToAction("Index");
+            }
+
+            if (FacturaController.facturas.Any(f => f.Reparacion.Vehiculo.Placa == placa && !f.Pagada))
+            {
+                TempData["Error"] = "Este vehículo tiene una factura pendiente de pago";
+                return RedirectToAction("Index");
+            }
+
+            var reparacion = new CL_Taller.CReparacion.Reparacion(vehiculo, vehiculo);
+            reparaciones.Add(reparacion);
+            TempData["Exito"] = $"Reparación creada para el vehículo {placa}";
+            return RedirectToAction("Index");
         }
     }
 }

@@ -40,6 +40,11 @@ namespace CL_Taller.Servicios
             this.eventos = eventos;
         }
 
+        public void AgregarRepuesto(string nombre, string proveedor, DateTime fecha_compra, ulong valor)
+        {
+            taller.l_repuestos.Add(new Repuesto(nombre, proveedor, fecha_compra, valor));
+        }
+
         public void AgregarCliente(ulong id, string nombre, uint telefono, bool estCredito)
         {
             taller.l_clientes.Add(new Cliente(id, nombre, telefono, estCredito));

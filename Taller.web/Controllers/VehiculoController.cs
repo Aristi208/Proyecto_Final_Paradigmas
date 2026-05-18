@@ -23,6 +23,12 @@ namespace Taller.web.Controllers
         public IActionResult Crear(string placa, string marca, string modelo, ushort ano,
             string tipo, byte cilindros, ushort autonomia, byte baterias, ulong idCliente)
         {
+            if (vehiculos.Any(v => v.Placa == placa))
+            {
+                TempData["Error"] = $"Ya existe un vehículo con la placa {placa}";
+                return RedirectToAction("Crear");
+            }
+
             var cliente = ClienteController.clientes.FirstOrDefault(c => c.Id == idCliente);
             if (cliente == null)
                 return RedirectToAction("Crear");

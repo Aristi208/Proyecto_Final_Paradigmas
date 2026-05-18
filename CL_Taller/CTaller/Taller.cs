@@ -18,6 +18,7 @@ namespace CL_Taller.CTaller
         public List<Factura> l_facturas;
         public List<Cliente> l_clientes;
         public List<Mecanico> l_mecanicos;
+        public List<Repuesto> l_repuestos;
 
         public Taller(string nombre, List<Mecanico> l_mecanicos)
         {
@@ -27,10 +28,10 @@ namespace CL_Taller.CTaller
             l_vehiculos_reparaciones = new List <Vehiculo>();
             l_facturas = new List<Factura>();
             l_clientes = new List<Cliente>();
+            l_repuestos = new List<Repuesto>();
             this.l_mecanicos = new List<Mecanico>();
             this.l_mecanicos = l_mecanicos;
         }
-
         public string Nombre { get => nombre; set => nombre = value; }
 
     }

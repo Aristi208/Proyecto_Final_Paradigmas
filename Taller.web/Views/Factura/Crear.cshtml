@@ -1,23 +1,63 @@
-﻿<h2>Nueva factura</h2>
+﻿<h2 class="mb-4">
+    Nueva factura
+</h2>
 
-<form method="post">
-    <label>Reparación</label>
-    <select name="indexReparacion">
-        @for (int i = 0; i < ViewBag.Reparaciones.Count; i++)
-        {
-            <option value="@i">@ViewBag.Reparaciones[i].Vehiculo.Placa - @ViewBag.Reparaciones[i].Fecha.ToString("dd/MM/yyyy")</option>
-        }
-    </select><br />
+<div class="card-custom">
 
-    <label>Cliente</label>
-    <select name="idCliente">
-        @foreach (var c in ViewBag.Clientes)
-        {
-            <option value="@c.Id">@c.Nombre</option>
-        }
-    </select><br />
+    <form method="post">
 
-    <button type="submit">Generar factura</button>
-</form>
+        <div class="mb-4">
 
-<a href="/Factura">Volver</a>
+            <label class="form-label">
+                Reparación
+            </label>
+
+            <select name="indexReparacion"
+                    class="form-select">
+
+                @for (int i = 0;
+                               i < ViewBag.Reparaciones.Count;
+                               i++)
+                {
+                    <option value="@i">
+
+                        @ViewBag.Reparaciones[i].Vehiculo.Placa
+                        -
+                        @ViewBag.Reparaciones[i].Fecha.ToString("dd/MM/yyyy")
+
+                    </option>
+                }
+
+            </select>
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Cliente
+            </label>
+
+            <select name="idCliente"
+                    class="form-select">
+
+                @foreach (var c in ViewBag.Clientes)
+                {
+                    <option value="@c.Id">
+                        @c.Nombre
+                    </option>
+                }
+
+            </select>
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-dark">
+
+            Generar factura
+        </button>
+
+    </form>
+
+</div>

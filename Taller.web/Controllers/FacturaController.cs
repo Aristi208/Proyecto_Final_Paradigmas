@@ -8,8 +8,6 @@ namespace Taller.web.Controllers
     public class FacturaController : Controller
     {
         public static List<Factura> facturas = new();
-        private static List<Reparacion> reparaciones = ReparacionController.reparaciones;
-        private static List<Cliente> clientes = ClienteController.clientes;
         private static CL_Taller.Eventos.Publ_cancelacion_pago eventoPago = new();
 
         static FacturaController()
@@ -26,30 +24,21 @@ namespace Taller.web.Controllers
             return View(facturas);
         }
 
-        public IActionResult Crear()
+        public IActionResult Pagar(string placa)
         {
-            ViewBag.Reparaciones = reparaciones;
-            ViewBag.Clientes = clientes;
+            var factura = facturas.LastOrDefault(f => f.Reparacion.Vehiculo.Placa == placa && !f.Pagada);
+            if (factura == null)
+                return RedirectToAction("Index");
+            ViewBag.Placa = placa;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Crear(int indexReparacion, ulong idCliente)
+        public IActionResult ProcesarPago(string placa, string tipoPago)
         {
-            var reparacion = reparaciones[indexReparacion];
-            var cliente = clientes.FirstOrDefault(c => c.Id == idCliente);
-            if (cliente == null)
-                return RedirectToAction("Crear");
-
-            var factura = new Factura(reparacion, cliente);
-            facturas.Add(factura);
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public IActionResult ProcesarPago(int index, string tipoPago)
-        {
-            var factura = facturas[index];
+            var factura = facturas.LastOrDefault(f => f.Reparacion.Vehiculo.Placa == placa && !f.Pagada);
+            if (factura == null)
+                return RedirectToAction("Index");
 
             if (tipoPago == "Credito")
                 factura.CambiarMetodoPago(new Con_credito(factura.Total, factura.Cliente));
@@ -71,9 +60,12 @@ namespace Taller.web.Controllers
             var misFacturas = facturas.Where(f => f.Cliente.Id.ToString() == idCliente).ToList();
             return View(misFacturas);
         }
-        public IActionResult Pagar(int index)
+        public IActionResult Detalle(string placa)
         {
-            ViewBag.Index = index;
+            var factura = facturas.FirstOrDefault(f => f.Reparacion.Vehiculo.Placa == placa);
+            if (factura == null)
+                return RedirectToAction("Index");
+            ViewBag.Factura = factura;
             return View();
         }
     }

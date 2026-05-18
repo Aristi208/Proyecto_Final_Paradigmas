@@ -1,0 +1,10 @@
+﻿Filtro de aceite,Bosch,35000
+Filtro de aire,Mann,28000
+Pastillas de freno,Brembo,120000
+Bujias,NGK,15000
+Correa de distribucion,Gates,85000
+Amortiguador,Monroe,200000
+Bateria,Willard,350000
+Alternador,Bosch,450000
+Bomba de agua,Dayco,180000
+Radiador,Valeo,520000

@@ -1,62 +1,217 @@
-﻿<h2>Registrar vehículo</h2>
+﻿<h2 class="mb-4">
+    Registrar vehículo
+</h2>
 
-<form method="post">
-    <label>Placa</label>
-    <input type="text" name="placa" placeholder="ABC123" /><br />
+<div class="card-custom">
 
-    <label>Marca</label>
-    <input type="text" name="marca" /><br />
+    <form method="post">
 
-    <label>Modelo</label>
-    <input type="text" name="modelo" /><br />
-
-    <label>Año</label>
-    <input type="number" name="ano" /><br />
-
-    <label>Tipo de vehículo</label>
-    <select name="tipo" id="tipo" onchange="mostrarCampos()">
-        <option value="">Seleccione...</option>
-        <option value="Gasolina">Gasolina</option>
-        <option value="Electrico">Eléctrico</option>
-        <option value="Hibrido">Híbrido</option>
-    </select><br /><br />
-
-    <div id="campoGasolina" style="display:none">
-        <label>Cantidad de cilindros</label>
-        <input type="number" name="cilindros" /><br />
-    </div>
-
-    <div id="campoElectrico" style="display:none">
-        <label>Autonomía (km)</label>
-        <input type="number" name="autonomia" /><br />
-    </div>
-
-    <div id="campoHibrido" style="display:none">
-        <label>Cantidad de baterías</label>
-        <input type="number" name="baterias" /><br />
-    </div>
-    <label>Cliente</label>
-    <select name="idCliente">
-        @foreach (var c in ViewBag.Clientes)
+        @if (TempData["Error"] != null)
         {
-            <option value="@c.Id">@c.Nombre</option>
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
         }
-    </select><br /><br />
-    <br />
-    <button type="submit">Registrar</button>
-</form>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Placa
+                    </label>
+
+                    <input type="text"
+                           name="placa"
+                           class="form-control"
+                           placeholder="ABC123" />
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Marca
+                    </label>
+
+                    <input type="text"
+                           name="marca"
+                           class="form-control"
+                           placeholder="Toyota, Mazda..." />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Modelo
+                    </label>
+
+                    <input type="text"
+                           name="modelo"
+                           class="form-control"
+                           placeholder="Corolla, CX5..." />
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Año
+                    </label>
+
+                    <input type="number"
+                           name="ano"
+                           class="form-control"
+                           placeholder="2024" />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Tipo de vehículo
+            </label>
+
+            <select name="tipo"
+                    id="tipo"
+                    class="form-select"
+                    onchange="mostrarCampos()">
+
+                <option value="">
+                    Seleccione...
+                </option>
+
+                <option value="Gasolina">
+                    ⛽ Gasolina
+                </option>
+
+                <option value="Electrico">
+                    ⚡ Eléctrico
+                </option>
+
+                <option value="Hibrido">
+                    🔋 Híbrido
+                </option>
+
+            </select>
+
+        </div>
+
+        <div id="campoGasolina"
+             style="display:none"
+             class="card p-3 mb-3 border-0 bg-light">
+
+            <label class="form-label">
+                Cantidad de cilindros
+            </label>
+
+            <input type="number"
+                   name="cilindros"
+                   class="form-control" />
+
+        </div>
+
+        <div id="campoElectrico"
+             style="display:none"
+             class="card p-3 mb-3 border-0 bg-light">
+
+            <label class="form-label">
+                Autonomía (km)
+            </label>
+
+            <input type="number"
+                   name="autonomia"
+                   class="form-control" />
+
+        </div>
+
+        <div id="campoHibrido"
+             style="display:none"
+             class="card p-3 mb-3 border-0 bg-light">
+
+            <label class="form-label">
+                Cantidad de baterías
+            </label>
+
+            <input type="number"
+                   name="baterias"
+                   class="form-control" />
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Cliente propietario
+            </label>
+
+            <select name="idCliente"
+                    class="form-select">
+
+                @foreach (var c in ViewBag.Clientes)
+                {
+                    <option value="@c.Id">
+                        @c.Nombre
+                    </option>
+                }
+
+            </select>
+
+        </div>
+
+        <div class="d-flex gap-2">
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                Registrar vehículo
+            </button>
+
+            <a href="/Vehiculo"
+                   class="btn btn-outline-secondary">
+
+                Volver
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
 
 <script>
+
     function mostrarCampos() {
+
         document.getElementById('campoGasolina').style.display = 'none';
         document.getElementById('campoElectrico').style.display = 'none';
         document.getElementById('campoHibrido').style.display = 'none';
 
         var tipo = document.getElementById('tipo').value;
-        if (tipo === 'Gasolina') document.getElementById('campoGasolina').style.display = 'block';
-        if (tipo === 'Electrico') document.getElementById('campoElectrico').style.display = 'block';
-        if (tipo === 'Hibrido') document.getElementById('campoHibrido').style.display = 'block';
-    }
-</script>
 
-<a href="/Vehiculo">Volver</a>
+        if (tipo === 'Gasolina')
+            document.getElementById('campoGasolina').style.display = 'block';
+
+        if (tipo === 'Electrico')
+            document.getElementById('campoElectrico').style.display = 'block';
+
+        if (tipo === 'Hibrido')
+            document.getElementById('campoHibrido').style.display = 'block';
+    }
+
+</script>

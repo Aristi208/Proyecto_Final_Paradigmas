@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj": {}
+    "C:\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj": {
+    "C:\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj",
+        "projectUniqueName": "C:\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj",
         "projectName": "Taller.web",
-        "projectPath": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj",
+        "projectPath": "C:\\Proyecto_Final_Paradigmas\\Taller.web\\Taller.web.csproj",
         "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego\\OneDrive\\Desktop\\Proyecto_Final_Paradigmas\\Taller.web\\obj\\",
+        "outputPath": "C:\\Proyecto_Final_Paradigmas\\Taller.web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

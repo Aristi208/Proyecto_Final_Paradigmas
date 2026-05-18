@@ -1,58 +1,281 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Taller.web</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - Taller Mecánico</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Taller.web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+            body {
+                background: #eef2f7;
+                font-family: 'Segoe UI', sans-serif;
+                overflow-x: hidden;
+            }
+
+            .navbar {
+                background: linear-gradient(90deg, #0f172a, #1e293b);
+                padding: 14px 20px;
+                box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+            }
+
+            .navbar-brand {
+                color: white !important;
+                font-size: 1.5rem;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+
+            .nav-link {
+                color: #cbd5e1 !important;
+                transition: all 0.3s ease;
+                border-radius: 8px;
+                padding: 8px 14px !important;
+            }
+
+                .nav-link:hover {
+                    background: rgba(255,255,255,0.08);
+                    color: white !important;
+                }
+
+            .main-container {
+                background: white;
+                border-radius: 22px;
+                padding: 35px;
+                margin-top: 35px;
+                margin-bottom: 35px;
+                box-shadow: 0px 10px 35px rgba(0,0,0,0.08);
+                animation: aparecer 0.5s ease;
+            }
+
+            @@keyframes aparecer {
+
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            h1, h2, h3, h4 {
+                font-weight: 700;
+                color: #0f172a;
+            }
+
+            .table {
+                border-radius: 16px;
+                overflow: hidden;
+            }
+
+                .table thead {
+                    background: #111827;
+                    color: white;
+                }
+
+                .table th {
+                    font-weight: 600;
+                }
+
+                .table td, .table th {
+                    padding: 16px !important;
+                    vertical-align: middle;
+                }
+
+                .table tbody tr {
+                    transition: 0.25s;
+                }
+
+                    .table tbody tr:hover {
+                        background: #f8fafc;
+                        transform: scale(1.003);
+                    }
+
+            .btn {
+                border-radius: 12px;
+                font-weight: 600;
+                transition: all 0.25s ease;
+                padding: 10px 18px;
+            }
+
+                .btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0px 5px 15px rgba(0,0,0,0.12);
+                }
+
+            .form-control,
+            .form-select {
+                border-radius: 12px;
+                padding: 12px;
+                border: 1px solid #d1d5db;
+                transition: 0.3s;
+            }
+
+                .form-control:focus,
+                .form-select:focus {
+                    border-color: #2563eb;
+                    box-shadow: 0px 0px 0px 4px rgba(37,99,235,0.15);
+                }
+
+            .card-custom {
+                background: white;
+                border-radius: 22px;
+                padding: 25px;
+                box-shadow: 0px 5px 20px rgba(0,0,0,0.08);
+                transition: all 0.3s ease;
+                border: none;
+            }
+
+                .card-custom:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0px 12px 30px rgba(0,0,0,0.12);
+                }
+
+            .badge-status {
+                padding: 8px 14px;
+                border-radius: 30px;
+                font-size: 0.85rem;
+                font-weight: 600;
+            }
+
+            .success {
+                background: #dcfce7;
+                color: #166534;
+            }
+
+            .danger {
+                background: #fee2e2;
+                color: #991b1b;
+            }
+
+            .dashboard-card {
+                border-radius: 20px;
+                padding: 24px;
+                color: white;
+                position: relative;
+                overflow: hidden;
+                transition: 0.3s;
+            }
+
+                .dashboard-card:hover {
+                    transform: translateY(-5px);
+                }
+
+                .dashboard-card h2 {
+                    font-size: 2.2rem;
+                    margin: 0;
+                    color: white;
+                }
+
+                .dashboard-card p {
+                    margin: 0;
+                    opacity: 0.9;
+                }
+
+            .bg-blue {
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            }
+
+            .bg-green {
+                background: linear-gradient(135deg, #16a34a, #15803d);
+            }
+
+            .bg-orange {
+                background: linear-gradient(135deg, #ea580c, #c2410c);
+            }
+
+            .bg-dark2 {
+                background: linear-gradient(135deg, #1e293b, #0f172a);
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                color: #64748b;
+            }
+
+    </style>
 </head>
+
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Taller.web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    🚗 Taller Mecánico
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
                     @{
                         var rol = Context.Session.GetString("Rol");
                     }
 
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Inicio</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
 
                         @if (rol == "Cliente")
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Vehiculo" asp-action="MisVehiculos">Mis Vehículos</a>
+                                <a class="nav-link" asp-controller="Vehiculo" asp-action="MisVehiculos">
+                                    Mis Vehículos
+                                </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Factura" asp-action="MisFacturas">Mis Facturas</a>
+                                <a class="nav-link" asp-controller="Factura" asp-action="MisFacturas">
+                                    Mis Facturas
+                                </a>
                             </li>
                         }
                         else if (rol == "Mecanico")
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Reparacion" asp-action="Index">Reparaciones</a>
+                                <a class="nav-link" asp-controller="Reparacion" asp-action="Index">
+                                    Reparaciones
+                                </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Factura" asp-action="Index">Facturas</a>
+                                <a class="nav-link" asp-controller="Factura" asp-action="Index">
+                                    Facturas
+                                </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Cliente" asp-action="Index">Clientes</a>
+                                <a class="nav-link" asp-controller="Cliente" asp-action="Index">
+                                    Clientes
+                                </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Vehiculo" asp-action="Index">Vehículos</a>
+                                <a class="nav-link" asp-controller="Vehiculo" asp-action="Index">
+                                    Vehículos
+                                </a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Mecanico" asp-action="Index">Mecánicos</a>
+                                <a class="nav-link" asp-controller="Mecanico" asp-action="Index">
+                                    Mecánicos
+                                </a>
                             </li>
                         }
                     </ul>
@@ -60,20 +283,32 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="main-container">
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    ⚠️ @TempData["Error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            @if (TempData["Exito"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    ✅ @TempData["Exito"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Taller.web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer>
+        © 2026 - Taller Mecánico 🚘
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

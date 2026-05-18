@@ -2,19 +2,31 @@
     var rol = Context.Session.GetString("Rol");
 }
 
-<div style="text-align:center; margin-top:50px;">
-    <h1>Bienvenido al Taller</h1>
+<div class="text-center py-5">
+
+    <h1 class="display-4 fw-bold">
+        🚗 Sistema Taller Mecánico
+    </h1>
+
+    <p class="lead text-muted mb-5">
+        Gestión de clientes, vehículos, reparaciones y facturación.
+    </p>
 
     @if (rol == null)
     {
-        <p>¿Cómo deseas ingresar?</p>
-        <a href="/Home/SeleccionarRol?rol=Cliente" class="btn btn-primary">Soy Cliente</a>
-        <a href="/Home/SeleccionarRol?rol=Mecanico" class="btn btn-success">Soy Mecánico</a>
-    }
-    else if (rol == "Mecanico")
-    {
-        <p>Ingresaste como: <strong>Mecánico</strong></p>
-        <a href="/Home/SeleccionarRol?rol=" class="btn btn-secondary">Cambiar rol</a>
+        <div class="d-flex justify-content-center gap-3">
+
+            <a href="/Home/SeleccionarRol?rol=Cliente"
+               class="btn btn-primary btn-lg">
+                Soy Cliente
+            </a>
+
+            <a href="/Home/SeleccionarRol?rol=Mecanico"
+               class="btn btn-success btn-lg">
+                Soy Mecánico
+            </a>
+
+        </div>
     }
     else if (rol == "Cliente")
     {
@@ -22,19 +34,50 @@
 
         @if (idCliente == null)
         {
-            <p>Ingresa tu ID para ver tu información</p>
-            <form method="post" action="/Home/IngresarCliente">
-                <input type="number" name="idCliente" placeholder="Tu ID" />
-                <button type="submit">Ingresar</button>
-            </form>
+            <div class="card-custom mx-auto" style="max-width:400px;">
+
+                <h3 class="mb-4">Ingresar como cliente</h3>
+
+                <form method="post" action="/Home/IngresarCliente">
+
+                    <div class="mb-3">
+                        <input type="number"
+                               name="idCliente"
+                               class="form-control"
+                               placeholder="Ingresa tu ID" />
+                    </div>
+
+                    <button type="submit" class="btn btn-dark w-100">
+                        Ingresar
+                    </button>
+
+                </form>
+            </div>
         }
         else
         {
-            <p>Bienvenido, <strong>@Context.Session.GetString("NombreCliente")</strong></p>
-            <a href="/Home/CerrarCliente" class="btn btn-secondary">Salir</a>
-        }
+            <div class="alert alert-success mt-4">
+                Bienvenido,
+                <strong>@Context.Session.GetString("NombreCliente")</strong>
+            </div>
 
-        <br />
-        <a href="/Home/SeleccionarRol?rol=" class="btn btn-secondary">Cambiar rol</a>
+            <a href="/Home/CerrarCliente"
+               class="btn btn-outline-danger">
+                Cerrar sesión
+            </a>
+        }
     }
+    else if (rol == "Mecanico")
+    {
+        <div class="alert alert-info mt-4">
+            Has ingresado como <strong>Mecánico</strong>
+        </div>
+    }
+
+    <div class="mt-4">
+        <a href="/Home/SeleccionarRol?rol="
+           class="btn btn-outline-secondary">
+            Cambiar rol
+        </a>
+    </div>
 </div>

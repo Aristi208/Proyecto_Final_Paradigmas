@@ -11,6 +11,7 @@ namespace Taller.web.Datos
             CargarClientes(Path.Combine(rutaBase, "clientes.txt"));
             CargarMecanicos(Path.Combine(rutaBase, "mecanicos.txt"));
             CargarVehiculos(Path.Combine(rutaBase, "vehiculos.txt"));
+            CargarRepuestos(Path.Combine(rutaBase, "repuestos.txt"));
         }
 
         private static void CargarClientes(string ruta)
@@ -51,6 +52,15 @@ namespace Taller.web.Datos
                 };
 
                 VehiculoController.vehiculos.Add(vehiculo);
+            }
+        }
+        private static void CargarRepuestos(string ruta)
+        {
+            foreach (var linea in File.ReadAllLines(ruta))
+            {
+                var p = linea.Split(',');
+                var repuesto = new CL_Taller.CReparacion.Repuesto(p[0], p[1], DateTime.Now, ulong.Parse(p[2]));
+                AppState.Taller.l_repuestos.Add(repuesto);
             }
         }
     }
